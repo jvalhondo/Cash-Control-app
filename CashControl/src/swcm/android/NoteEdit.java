@@ -1,4 +1,6 @@
-package com.android.demo.notepad3;
+package swcm.android;
+
+import swcm.android.R;
 
 import android.app.Activity;
 import android.database.Cursor;
