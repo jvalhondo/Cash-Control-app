@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package com.android.demo.notepad3;
+package swcm.android;
+
+import swcm.android.R;
 
 import android.app.ListActivity;
 import android.content.Intent;
