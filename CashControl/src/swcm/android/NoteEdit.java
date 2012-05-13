@@ -1,7 +1,5 @@
 package swcm.android;
 
-import swcm.android.R;
-
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
