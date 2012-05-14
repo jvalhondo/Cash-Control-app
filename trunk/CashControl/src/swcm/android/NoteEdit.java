@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 public class NoteEdit extends Activity {
 	private EditText mTitleText;
-	private EditText mBodyText;
+	private EditText mDescriptionText;
 	private Long mRowId;
 	private NotesDbAdapter mDbHelper;
 
@@ -23,8 +23,8 @@ public class NoteEdit extends Activity {
 		setContentView(R.layout.note_edit);
 		setTitle(R.string.edit_note);
 		
-		mTitleText = (EditText) findViewById(R.id.title);
-		mBodyText = (EditText) findViewById(R.id.body);
+		mTitleText = (EditText) findViewById(R.id.person);
+		mDescriptionText = (EditText) findViewById(R.id.description);
 		
 		Button confirmButton = (Button) findViewById(R.id.confirm);
 		
@@ -54,7 +54,7 @@ public class NoteEdit extends Activity {
 	        startManagingCursor(note);
 	        mTitleText.setText(note.getString(
 	                    note.getColumnIndexOrThrow(NotesDbAdapter.KEY_TITLE)));
-	        mBodyText.setText(note.getString(
+	        mDescriptionText.setText(note.getString(
 	                note.getColumnIndexOrThrow(NotesDbAdapter.KEY_BODY)));
 	    }
 	}
@@ -68,7 +68,7 @@ public class NoteEdit extends Activity {
 	
 	 private void saveState() {
 		 String title = mTitleText.getText().toString();
-	     String body = mBodyText.getText().toString();
+	     String body = mDescriptionText.getText().toString();
 
 	     if (mRowId == null) {
 	        long id = mDbHelper.createNote(title, body);
