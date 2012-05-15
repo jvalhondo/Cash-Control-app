@@ -7,6 +7,8 @@
     <string name="person">Person</string>
     <string name="description">Description</string>
     <string name="amount">Amount</string>
+    <string name="dateSet">Set Date</string>
+    <string name="timeSet">Set Time</string>
     <string name="confirm">Confirm</string>
     <string name="edit_note">Edit Note</string>
 </resources>

@@ -60,26 +60,50 @@
         <requestFocus />
     </EditText>
 
-    <TimePicker
-        android:id="@+id/timePicker"
+    <TextView
+        android:id="@+id/dateDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_below="@id/amount"
-        android:layout_alignParentLeft="true" />
-    
-    <DatePicker
-        android:id="@+id/datePicker"
+        android:layout_marginTop="10dip"
+        android:text="" />
+
+    <Button
+        android:id="@+id/pickDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/timePicker"
-        android:layout_alignParentRight="true" />
+        android:layout_alignBaseline="@+id/dateDisplay"
+        android:layout_alignBottom="@+id/dateDisplay"
+        android:layout_alignParentRight="true"
+        android:text="@string/dateSet" />
+
+    <TextView
+        android:id="@+id/timeDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/dateDisplay"
+        android:layout_marginTop="40dip"
+        android:text="" />
+
+    <Button
+        android:id="@+id/pickTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/timeDisplay"
+        android:layout_alignBottom="@+id/timeDisplay"
+        android:layout_alignParentRight="true"
+        android:text="@string/timeSet" />
 
     <Button
         android:id="@+id/confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/datePicker"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_marginBottom="37dp"
         android:text="@string/confirm" />
+
 
 </RelativeLayout>
