@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="30dp" >
+
+<RelativeLayout
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:gravity="center" >
 
@@ -101,9 +110,11 @@
         android:id="@+id/confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/pickTime"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="28dp"
+        android:layout_marginTop="40dip"
         android:text="@string/confirm" />
 
 </RelativeLayout>
+
+</ScrollView>
