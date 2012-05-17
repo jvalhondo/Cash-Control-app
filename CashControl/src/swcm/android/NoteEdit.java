@@ -185,9 +185,9 @@ public class NoteEdit extends Activity {
 		  Cursor note = mDbHelper.fetchNote(mRowId);
 		  startManagingCursor(note);
 		  mPersonText.setText(note.getString(
-		              note.getColumnIndexOrThrow(NotesDbAdapter.KEY_TITLE)));
+		              note.getColumnIndexOrThrow(NotesDbAdapter.KEY_PERSON)));
 		  mDescriptionText.setText(note.getString(
-		                   note.getColumnIndexOrThrow(NotesDbAdapter.KEY_BODY)));
+		                   note.getColumnIndexOrThrow(NotesDbAdapter.KEY_DESCRIPTION)));
 	   }
     }
 		
