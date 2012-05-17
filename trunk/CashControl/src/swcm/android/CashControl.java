@@ -26,12 +26,16 @@ public class CashControl extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
         setContentView(R.layout.notes_list);
+        
         mDbHelper = new NotesDbAdapter(this);
         mDbHelper.open();
+        
         fillData();
+        
         registerForContextMenu(getListView());
-    }
+    } // close onCreate method
 
     private void fillData() {
         // Get all of the rows from the database and create the item list
@@ -87,12 +91,13 @@ public class CashControl extends ListActivity {
         return super.onContextItemSelected(item);
     }
 
+    // creating
     private void createNote() {
         Intent i = new Intent(this, NoteEdit.class);
         startActivityForResult(i, ACTIVITY_CREATE);
     }
 
-    @Override
+    // editing/ updating
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         Intent i = new Intent(this, NoteEdit.class);
@@ -100,7 +105,7 @@ public class CashControl extends ListActivity {
         startActivityForResult(i, ACTIVITY_EDIT);
     }
 
-    @Override
+    // we get the result of startActivityForResult through this method
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
         fillData();
