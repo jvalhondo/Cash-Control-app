@@ -18,7 +18,7 @@ import android.util.Log;
  * of using a collection of inner classes (which is less scalable and not
  * recommended).
  */
-public class NotesDbAdapter {
+public class LoansDbAdapter {
 
     public static final String KEY_PERSON = "person";
     public static final String KEY_DESCRIPTION = "description";
@@ -35,12 +35,12 @@ public class NotesDbAdapter {
      * Database creation sql statement
      */
     private static final String DATABASE_CREATE =
-        "create table notes (_id integer primary key autoincrement, "
+        "create table loans (_id integer primary key autoincrement, "
         + "person text not null, description text not null, amount text not null,"
         + "date text not null, time text not null);";
 
     private static final String DATABASE_NAME = "data";
-    private static final String DATABASE_TABLE = "notes";
+    private static final String DATABASE_TABLE = "loans";
     private static final int DATABASE_VERSION = 2;
 
     private final Context mCtx;
@@ -61,7 +61,7 @@ public class NotesDbAdapter {
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
                     + newVersion + ", which will destroy all old data");
-            db.execSQL("DROP TABLE IF EXISTS notes");
+            db.execSQL("DROP TABLE IF EXISTS loans");
             onCreate(db);
         }
     }
@@ -72,7 +72,7 @@ public class NotesDbAdapter {
      * 
      * @param ctx the Context within which to work
      */
-    public NotesDbAdapter(Context ctx) {
+    public LoansDbAdapter(Context ctx) {
         this.mCtx = ctx;
     }
 
@@ -85,7 +85,7 @@ public class NotesDbAdapter {
      *         initialization call)
      * @throws SQLException if the database could be neither opened or created
      */
-    public NotesDbAdapter open() throws SQLException {
+    public LoansDbAdapter open() throws SQLException {
         mDbHelper = new DatabaseHelper(mCtx);
         mDb = mDbHelper.getWritableDatabase();
         return this;
@@ -105,10 +105,13 @@ public class NotesDbAdapter {
      * @param body the body of the note
      * @return rowId or -1 if failed
      */
-    public long createNote(String person, String description) {
+    public long createNote(String person, String description, String amount, String date, String time) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_PERSON, person);
         initialValues.put(KEY_DESCRIPTION, description);
+        initialValues.put(KEY_AMOUNT, amount);
+        initialValues.put(KEY_DATE, date);
+        initialValues.put(KEY_TIME, time);
 
         return mDb.insert(DATABASE_TABLE, null, initialValues);
     }
@@ -132,7 +135,7 @@ public class NotesDbAdapter {
     public Cursor fetchAllNotes() {
 
         return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_PERSON,
-                KEY_DESCRIPTION}, null, null, null, null, null);
+                KEY_DESCRIPTION, KEY_AMOUNT, KEY_DATE, KEY_TIME}, null, null, null, null, null);
     }
 
     /**
@@ -147,7 +150,7 @@ public class NotesDbAdapter {
         Cursor mCursor =
 
             mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
-                    KEY_PERSON, KEY_DESCRIPTION}, KEY_ROWID + "=" + rowId, null,
+                    KEY_PERSON, KEY_DESCRIPTION, KEY_AMOUNT, KEY_DATE, KEY_TIME}, KEY_ROWID + "=" + rowId, null,
                     null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -166,10 +169,14 @@ public class NotesDbAdapter {
      * @param body value to set note body to
      * @return true if the note was successfully updated, false otherwise
      */
-    public boolean updateNote(long rowId, String person, String description) {
+    public boolean updateNote(long rowId, String person, String description, String amount, String date, String time) {
         ContentValues args = new ContentValues();
         args.put(KEY_PERSON, person);
         args.put(KEY_DESCRIPTION, description);
+        args.put(KEY_AMOUNT, amount);
+        args.put(KEY_DATE, date);
+        args.put(KEY_TIME, time);
+        
 
         return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
     }

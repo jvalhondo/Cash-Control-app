@@ -20,7 +20,7 @@ public class CashControl extends ListActivity {
     private static final int INSERT_ID = Menu.FIRST;
     private static final int DELETE_ID = Menu.FIRST + 1;
 
-    private NotesDbAdapter mDbHelper;
+    private LoansDbAdapter mDbHelper;
 
     /** Called when the activity is first created. */
     @Override
@@ -29,7 +29,7 @@ public class CashControl extends ListActivity {
         
         setContentView(R.layout.notes_list);
         
-        mDbHelper = new NotesDbAdapter(this);
+        mDbHelper = new LoansDbAdapter(this);
         mDbHelper.open();
         
         fillData();
@@ -43,7 +43,7 @@ public class CashControl extends ListActivity {
         startManagingCursor(notesCursor);
 
         // Create an array to specify the fields we want to display in the list (only TITLE)
-        String[] from = new String[]{NotesDbAdapter.KEY_PERSON};
+        String[] from = new String[]{LoansDbAdapter.KEY_PERSON};
 
         // and an array of the fields we want to bind those fields to (in this case just text1)
         int[] to = new int[]{R.id.text1};
@@ -93,15 +93,15 @@ public class CashControl extends ListActivity {
 
     // creating
     private void createNote() {
-        Intent i = new Intent(this, NoteEdit.class);
+        Intent i = new Intent(this, LoanEdit.class);
         startActivityForResult(i, ACTIVITY_CREATE);
     }
 
     // editing/ updating
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        Intent i = new Intent(this, NoteEdit.class);
-        i.putExtra(NotesDbAdapter.KEY_ROWID, id);
+        Intent i = new Intent(this, LoanEdit.class);
+        i.putExtra(LoansDbAdapter.KEY_ROWID, id);
         startActivityForResult(i, ACTIVITY_EDIT);
     }
 
