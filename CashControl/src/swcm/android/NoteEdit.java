@@ -188,7 +188,7 @@ public class NoteEdit extends Activity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         saveState();
-        outState.putSerializable(NotesDbAdapter.KEY_ROWID, mRowId);
+        outState.putSerializable(NotesDbAdapter.KEY_ROWID, mRowId); //AÑADIR LOS OTROS CAMPOS. oN RESTORE INSTANCE STATE
     }
 	
 	 private void saveState() {
@@ -201,7 +201,7 @@ public class NoteEdit extends Activity {
 	           mRowId = id;
 	        }
 	     } else {
-	       mDbHelper.updateNote(mRowId, title, body);
+	       mDbHelper.updateNote(mRowId, title, body); //PARA EVITAR HUECOS
 	     }
 	}
 
