@@ -16,29 +16,30 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 public class NoteEdit extends Activity {
-	private EditText mTitleText;
+	// for fields Person, Description, Amount
+	private EditText mPersonText;
 	private EditText mDescriptionText;
+	private EditText mAmountText;
+	
 	private Long mRowId;
 	private NotesDbAdapter mDbHelper;
 	
-	//for the date button"Set Date"
+	// for the date button"Set Date"
 	private TextView mDateDisplay;
     private Button mPickDate;
     private int mYear;
     private int mMonth;
     private int mDay;
-
     static final int DATE_DIALOG_ID = 0;
     
-    //for the date button"Set Date"
+    // for the date button"Set Date"
     private TextView mTimeDisplay;
     private Button mPickTime;
-
     private int mHour;
     private int mMinute;
-
     static final int TIME_DIALOG_ID = 1;
 
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,8 +50,11 @@ public class NoteEdit extends Activity {
 		setContentView(R.layout.note_edit);
 		setTitle(R.string.edit_note);
 		
-		mTitleText = (EditText) findViewById(R.id.person);
+		// capture our Text elements
+		mPersonText = (EditText) findViewById(R.id.person);
 		mDescriptionText = (EditText) findViewById(R.id.description);
+		mAmountText = (EditText) findViewById(R.id.amount);
+		
 		
 		// capture our View elements Set Date
         mDateDisplay = (TextView) findViewById(R.id.dateDisplay);
@@ -66,9 +70,9 @@ public class NoteEdit extends Activity {
         mYear = dateCalendar.get(Calendar.YEAR);
         mMonth = dateCalendar.get(Calendar.MONTH);
         mDay = dateCalendar.get(Calendar.DAY_OF_MONTH);
-
-        // display the current date (this method is below)
+        // display the current date
         updateDateDisplay();
+        
         
         // capture our View elements Set Time
         mTimeDisplay = (TextView) findViewById(R.id.timeDisplay);
@@ -83,12 +87,12 @@ public class NoteEdit extends Activity {
         final Calendar timeCalendar = Calendar.getInstance();
         mHour = timeCalendar.get(Calendar.HOUR_OF_DAY);
         mMinute = timeCalendar.get(Calendar.MINUTE);
-
         // display the current date
         updateTimeDisplay();
         
 		
 		Button confirmButton = (Button) findViewById(R.id.confirm);
+		
 		
 		mRowId = (savedInstanceState == null) ? null :
             (Long) savedInstanceState.getSerializable(NotesDbAdapter.KEY_ROWID);
@@ -108,7 +112,9 @@ public class NoteEdit extends Activity {
 		    }
 		    
 		});
-	}
+	} // close onCreate method
+	
+	
 	// updates the date we display in the TextView
 	private void updateDateDisplay() {
 		mDateDisplay.setText(
@@ -117,7 +123,36 @@ public class NoteEdit extends Activity {
 	                    .append(mMonth + 1).append("-")
 	                    .append(mDay).append("-")
 	                    .append(mYear).append(" "));
-		
+	}
+	
+	// updates the time we display in the TextView
+	private void updateTimeDisplay() {
+	    mTimeDisplay.setText(
+	       new StringBuilder()
+	           .append(pad(mHour)).append(":")
+	           .append(pad(mMinute)));
+	}
+	
+	// introduce a "0" if hour and/or minute are less than 10
+	private static String pad(int c) {
+		   if (c >= 10)
+		      return String.valueOf(c);
+		   else
+		      return "0" + String.valueOf(c);
+	}
+	
+	//show the dialog of the time/date Picker
+	protected Dialog onCreateDialog(int id) {
+	 	switch (id) {
+	    case DATE_DIALOG_ID:
+	         return new DatePickerDialog(this,
+	                     mDateSetListener,
+	                     mYear, mMonth, mDay);
+	    case TIME_DIALOG_ID:
+	         return new TimePickerDialog(this,
+	                 mTimeSetListener, mHour, mMinute, false);
+	   }
+	   return null;
 	}
 	
 	// the callback received when the user "sets" the date in the dialog
@@ -132,32 +167,7 @@ public class NoteEdit extends Activity {
                     updateDateDisplay();
                 }
             };
-    
- // updates the time we display in the TextView
-    private void updateTimeDisplay() {
-        mTimeDisplay.setText(
-            new StringBuilder()
-                    .append(pad(mHour)).append(":")
-                    .append(pad(mMinute)));
-    }
-    
-    private static String pad(int c) {
-        if (c >= 10)
-            return String.valueOf(c);
-        else
-            return "0" + String.valueOf(c);
-    }
-
-	private void populateFields() {
-		if (mRowId != null) {
-	        Cursor note = mDbHelper.fetchNote(mRowId);
-	        startManagingCursor(note);
-	        mTitleText.setText(note.getString(
-	                    note.getColumnIndexOrThrow(NotesDbAdapter.KEY_TITLE)));
-	        mDescriptionText.setText(note.getString(
-	                note.getColumnIndexOrThrow(NotesDbAdapter.KEY_BODY)));
-	    }
-	}
+	
 	
 	// the callback received when the user "sets" the time in the dialog
 	private TimePickerDialog.OnTimeSetListener mTimeSetListener =
@@ -168,21 +178,19 @@ public class NoteEdit extends Activity {
 	            updateTimeDisplay();
 	        }
 	    };
-	
-	    @Override
-	    protected Dialog onCreateDialog(int id) {
-	    	switch (id) {
-	        case DATE_DIALOG_ID:
-	            return new DatePickerDialog(this,
-	                        mDateSetListener,
-	                        mYear, mMonth, mDay);
-	        case TIME_DIALOG_ID:
-	            return new TimePickerDialog(this,
-	                    mTimeSetListener, mHour, mMinute, false);
-	        }
-	        return null;
-	    }
 	    
+
+	private void populateFields() {
+	   if (mRowId != null) {
+		  Cursor note = mDbHelper.fetchNote(mRowId);
+		  startManagingCursor(note);
+		  mPersonText.setText(note.getString(
+		              note.getColumnIndexOrThrow(NotesDbAdapter.KEY_TITLE)));
+		  mDescriptionText.setText(note.getString(
+		                   note.getColumnIndexOrThrow(NotesDbAdapter.KEY_BODY)));
+	   }
+    }
+		
 	
 	@Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -191,8 +199,9 @@ public class NoteEdit extends Activity {
         outState.putSerializable(NotesDbAdapter.KEY_ROWID, mRowId); //AÑADIR LOS OTROS CAMPOS. oN RESTORE INSTANCE STATE
     }
 	
-	 private void saveState() {
-		 String title = mTitleText.getText().toString();
+	 
+	private void saveState() {
+		 String title = mPersonText.getText().toString();
 	     String body = mDescriptionText.getText().toString();
 
 	     if (mRowId == null) {
@@ -204,17 +213,17 @@ public class NoteEdit extends Activity {
 	       mDbHelper.updateNote(mRowId, title, body); //PARA EVITAR HUECOS
 	     }
 	}
+	
 
 	@Override
-	    protected void onPause() {
+	protected void onPause() {
 	        super.onPause();
 	        saveState();
-	    }
+	}
 	 
 	 @Override
-	    protected void onResume() {
+	 protected void onResume() {
 	        super.onResume();
 	        populateFields();
-	    }
-	 
+	 }
 }
