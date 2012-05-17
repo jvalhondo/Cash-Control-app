@@ -15,14 +15,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-public class NoteEdit extends Activity {
+public class LoanEdit extends Activity {
 	// for fields Person, Description, Amount
 	private EditText mPersonText;
 	private EditText mDescriptionText;
 	private EditText mAmountText;
+	private EditText mDateText; //Asegurarse que es EditText
+	private EditText mTimeText;
 	
 	private Long mRowId;
-	private NotesDbAdapter mDbHelper;
+	private LoansDbAdapter mDbHelper;
 	
 	// for the date button"Set Date"
 	private TextView mDateDisplay;
@@ -44,7 +46,7 @@ public class NoteEdit extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		mDbHelper = new NotesDbAdapter(this);
+		mDbHelper = new LoansDbAdapter(this);
 		mDbHelper.open();
 		
 		setContentView(R.layout.note_edit);
@@ -95,10 +97,10 @@ public class NoteEdit extends Activity {
 		
 		
 		mRowId = (savedInstanceState == null) ? null :
-            (Long) savedInstanceState.getSerializable(NotesDbAdapter.KEY_ROWID);
+            (Long) savedInstanceState.getSerializable(LoansDbAdapter.KEY_ROWID);
         if (mRowId == null) {
             Bundle extras = getIntent().getExtras();
-            mRowId = extras != null ? extras.getLong(NotesDbAdapter.KEY_ROWID)
+            mRowId = extras != null ? extras.getLong(LoansDbAdapter.KEY_ROWID)
                                     : null;
         }
         
@@ -185,9 +187,9 @@ public class NoteEdit extends Activity {
 		  Cursor note = mDbHelper.fetchNote(mRowId);
 		  startManagingCursor(note);
 		  mPersonText.setText(note.getString(
-		              note.getColumnIndexOrThrow(NotesDbAdapter.KEY_PERSON)));
+		              note.getColumnIndexOrThrow(LoansDbAdapter.KEY_PERSON)));
 		  mDescriptionText.setText(note.getString(
-		                   note.getColumnIndexOrThrow(NotesDbAdapter.KEY_DESCRIPTION)));
+		                   note.getColumnIndexOrThrow(LoansDbAdapter.KEY_DESCRIPTION)));
 	   }
     }
 		
@@ -196,21 +198,21 @@ public class NoteEdit extends Activity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         saveState();
-        outState.putSerializable(NotesDbAdapter.KEY_ROWID, mRowId); //AÑADIR LOS OTROS CAMPOS. oN RESTORE INSTANCE STATE
+        outState.putSerializable(LoansDbAdapter.KEY_ROWID, mRowId); //AÑADIR LOS OTROS CAMPOS. oN RESTORE INSTANCE STATE
     }
 	
 	 
 	private void saveState() {
-		 String title = mPersonText.getText().toString();
-	     String body = mDescriptionText.getText().toString();
+		 String person = mPersonText.getText().toString();
+	     String description = mDescriptionText.getText().toString();
 
 	     if (mRowId == null) {
-	        long id = mDbHelper.createNote(title, body);
+	        long id = mDbHelper.createLoan(person, description, amount, date, time);
 	        if (id > 0) {
 	           mRowId = id;
 	        }
 	     } else {
-	       mDbHelper.updateNote(mRowId, title, body); //PARA EVITAR HUECOS
+	       mDbHelper.updateLoan(mRowId, person, description, amount, date, time); //PARA EVITAR HUECOS
 	     }
 	}
 	
