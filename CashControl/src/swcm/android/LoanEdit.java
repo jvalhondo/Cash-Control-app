@@ -182,12 +182,18 @@ public class LoanEdit extends Activity {
 
 	private void populateFields() {
 	   if (mRowId != null) {
-		  Cursor note = mDbHelper.fetchNote(mRowId);
-		  startManagingCursor(note);
-		  mPersonText.setText(note.getString(
-		              note.getColumnIndexOrThrow(LoansDbAdapter.KEY_PERSON)));
-		  mDescriptionText.setText(note.getString(
-		                   note.getColumnIndexOrThrow(LoansDbAdapter.KEY_DESCRIPTION)));
+		  Cursor loan = mDbHelper.fetchNote(mRowId);
+		  startManagingCursor(loan);
+		  mPersonText.setText(loan.getString(
+		              loan.getColumnIndexOrThrow(LoansDbAdapter.KEY_PERSON)));
+		  mDescriptionText.setText(loan.getString(
+		                   loan.getColumnIndexOrThrow(LoansDbAdapter.KEY_DESCRIPTION)));
+		  mAmountText.setText(loan.getString(
+                  loan.getColumnIndexOrThrow(LoansDbAdapter.KEY_AMOUNT)));
+		  mDateDisplay.setText(loan.getString(
+                  loan.getColumnIndexOrThrow(LoansDbAdapter.KEY_DATE)));
+		  mTimeDisplay.setText(loan.getString(
+                  loan.getColumnIndexOrThrow(LoansDbAdapter.KEY_TIME)));
 	   }
     }
 		
