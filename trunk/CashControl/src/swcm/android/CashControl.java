@@ -27,7 +27,7 @@ public class CashControl extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        setContentView(R.layout.notes_list);
+        setContentView(R.layout.loans_list);
         
         mDbHelper = new LoansDbAdapter(this);
         mDbHelper.open();
@@ -39,19 +39,19 @@ public class CashControl extends ListActivity {
 
     private void fillData() {
         // Get all of the rows from the database and create the item list
-        Cursor notesCursor = mDbHelper.fetchAllNotes();
-        startManagingCursor(notesCursor);
+        Cursor loansCursor = mDbHelper.fetchAllNotes();
+        startManagingCursor(loansCursor);
 
-        // Create an array to specify the fields we want to display in the list (only TITLE)
+        // Create an array to specify the fields we want to display in the list (only PERSON)
         String[] from = new String[]{LoansDbAdapter.KEY_PERSON};
 
         // and an array of the fields we want to bind those fields to (in this case just text1)
         int[] to = new int[]{R.id.text1};
 
         // Now create a simple cursor adapter and set it to display
-        SimpleCursorAdapter notes = 
-            new SimpleCursorAdapter(this, R.layout.notes_row, notesCursor, from, to);
-        setListAdapter(notes);
+        SimpleCursorAdapter loans = 
+            new SimpleCursorAdapter(this, R.layout.loans_row, loansCursor, from, to);
+        setListAdapter(loans);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class CashControl extends ListActivity {
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         switch(item.getItemId()) {
             case INSERT_ID:
-                createNote();
+                createLoan();
                 return true;
         }
 
@@ -84,7 +84,7 @@ public class CashControl extends ListActivity {
         switch(item.getItemId()) {
             case DELETE_ID:
                 AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-                mDbHelper.deleteNote(info.id);
+                mDbHelper.deleteLoan(info.id);
                 fillData();
                 return true;
         }
@@ -92,7 +92,7 @@ public class CashControl extends ListActivity {
     }
 
     // creating
-    private void createNote() {
+    private void createLoan() {
         Intent i = new Intent(this, LoanEdit.class);
         startActivityForResult(i, ACTIVITY_CREATE);
     }
