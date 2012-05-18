@@ -105,7 +105,7 @@ public class LoansDbAdapter {
      * @param body the body of the note
      * @return rowId or -1 if failed
      */
-    public long createNote(String person, String description, String amount, String date, String time) {
+    public long createLoan(String person, String description, String amount, String date, String time) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_PERSON, person);
         initialValues.put(KEY_DESCRIPTION, description);
@@ -122,7 +122,7 @@ public class LoansDbAdapter {
      * @param rowId id of note to delete
      * @return true if deleted, false otherwise
      */
-    public boolean deleteNote(long rowId) {
+    public boolean deleteLoan(long rowId) {
 
         return mDb.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null) > 0;
     }
@@ -169,7 +169,7 @@ public class LoansDbAdapter {
      * @param body value to set note body to
      * @return true if the note was successfully updated, false otherwise
      */
-    public boolean updateNote(long rowId, String person, String description, String amount, String date, String time) {
+    public boolean updateLoan(long rowId, String person, String description, String amount, String date, String time) {
         ContentValues args = new ContentValues();
         args.put(KEY_PERSON, person);
         args.put(KEY_DESCRIPTION, description);

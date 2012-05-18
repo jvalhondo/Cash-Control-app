@@ -20,8 +20,6 @@ public class LoanEdit extends Activity {
 	private EditText mPersonText;
 	private EditText mDescriptionText;
 	private EditText mAmountText;
-	private EditText mDateText; //Asegurarse que es EditText
-	private EditText mTimeText;
 	
 	private Long mRowId;
 	private LoansDbAdapter mDbHelper;
@@ -49,8 +47,8 @@ public class LoanEdit extends Activity {
 		mDbHelper = new LoansDbAdapter(this);
 		mDbHelper.open();
 		
-		setContentView(R.layout.note_edit);
-		setTitle(R.string.edit_note);
+		setContentView(R.layout.loan_edit);
+		setTitle(R.string.edit_loan);
 		
 		// capture our Text elements
 		mPersonText = (EditText) findViewById(R.id.person);
@@ -205,6 +203,9 @@ public class LoanEdit extends Activity {
 	private void saveState() {
 		 String person = mPersonText.getText().toString();
 	     String description = mDescriptionText.getText().toString();
+	     String amount = mAmountText.getText().toString(); //  double B = Double.parseDouble(b.getText().toString()); Por si es double
+	     String date = mDateDisplay.getText().toString();
+	     String time = mTimeDisplay.getText().toString();
 
 	     if (mRowId == null) {
 	        long id = mDbHelper.createLoan(person, description, amount, date, time);
