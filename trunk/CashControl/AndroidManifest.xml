@@ -7,7 +7,7 @@
     <uses-sdk android:minSdkVersion="10" />
 
     <application
-        android:icon="@drawable/piggy_bank"
+        android:icon="@drawable/piggy_bank_icon"
         android:label="@string/app_name" >
         <activity
             android:name=".CashControl"
