@@ -18,8 +18,6 @@ public class CashControl extends ListActivity {
     private static final int ACTIVITY_CREATE=0;
     private static final int ACTIVITY_EDIT=1;
 
-    private static final int DELETE_ID = Menu.FIRST + 1;
-
     private LoansDbAdapter mDbHelper;
 
     /** Called when the activity is first created. */
@@ -43,10 +41,10 @@ public class CashControl extends ListActivity {
         startManagingCursor(loansCursor);
 
         // Create an array to specify the fields we want to display in the list (only PERSON)
-        String[] from = new String[]{LoansDbAdapter.KEY_PERSON};
+        String[] from = new String[]{LoansDbAdapter.KEY_PERSON, LoansDbAdapter.KEY_AMOUNT};
 
         // and an array of the fields we want to bind those fields to (in this case just text1)
-        int[] to = new int[]{R.id.text1};
+        int[] to = new int[]{R.id.text1, R.id.text2};
 
         // Now create a simple cursor adapter and set it to display
         SimpleCursorAdapter loans = 
@@ -57,14 +55,14 @@ public class CashControl extends ListActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
     	MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
     
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
+         //Handle item selection
+         switch (item.getItemId()) {
             case R.id.add_newloan:
                 createLoan();
                 return true;
@@ -80,25 +78,32 @@ public class CashControl extends ListActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
+   }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
             ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        menu.add(0, DELETE_ID, 0, R.string.menu_delete);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
+    	AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
         switch(item.getItemId()) {
-            case DELETE_ID:
-                AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+        	case R.id.edit:
+        		mDbHelper.deleteLoan(info.id);
+        		fillData();
+        		return true;
+            case R.id.delete:
                 mDbHelper.deleteLoan(info.id);
                 fillData();
                 return true;
+            default:
+            	return super.onContextItemSelected(item);
         }
-        return super.onContextItemSelected(item);
+        
     }
 
     // creating
