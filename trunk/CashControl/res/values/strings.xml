@@ -15,6 +15,14 @@
     <string name="timeSet">Set Time</string>
     <string name="confirm">Confirm</string>
     <string name="edit_loan">Edit Loan</string>
-    <string name="about_text">About Developers</string>
+    
+    <string name="app_about"> About Application </string>
+    <string name="app_version"> v 2.0 </string>
+    <string name="app_date"> 25/05/2012</string>
+    <string name="app_system"> Android 2.3.3</string>
+    <string name="about_text"> Developerers:</string>
+    <string name="author1"> Jorge Valhondo Rama</string>
+    <string name="author2"> Eva Suarez Alba</string>    
+        
     <string name="help_text">Help Text</string>
 </resources>
