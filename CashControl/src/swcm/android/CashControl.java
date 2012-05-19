@@ -41,10 +41,10 @@ public class CashControl extends ListActivity {
         startManagingCursor(loansCursor);
 
         // Create an array to specify the fields we want to display in the list (only PERSON)
-        String[] from = new String[]{LoansDbAdapter.KEY_PERSON, LoansDbAdapter.KEY_AMOUNT};
+        String[] from = new String[]{LoansDbAdapter.KEY_PERSON};
 
         // and an array of the fields we want to bind those fields to (in this case just text1)
-        int[] to = new int[]{R.id.text1, R.id.text2};
+        int[] to = new int[]{R.id.text1};
 
         // Now create a simple cursor adapter and set it to display
         SimpleCursorAdapter loans = 
@@ -61,29 +61,33 @@ public class CashControl extends ListActivity {
     
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-         //Handle item selection
-         switch (item.getItemId()) {
+        // Handle item selection
+        switch (item.getItemId()) {
             case R.id.add_newloan:
                 createLoan();
                 return true;
                 
             case R.id.help:
                 //poner el metodo que queremos
+            	Intent i = new Intent(this, HelpActivity.class);
+            	startActivity(i);
                 return true;
                 
             case R.id.about:
             	//poner el metodo que queremos
+            	Intent intent = new Intent(this, AboutActivity.class);
+            	startActivity(intent);
                 return true;
                 
             default:
                 return super.onOptionsItemSelected(item);
         }
-   }
+    }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
             ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
+    	super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.context_menu, menu);
     }
@@ -92,18 +96,17 @@ public class CashControl extends ListActivity {
     public boolean onContextItemSelected(MenuItem item) {
     	AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
         switch(item.getItemId()) {
-        	case R.id.edit:
-        		mDbHelper.deleteLoan(info.id);
-        		fillData();
-        		return true;
+            case R.id.edit:
+                mDbHelper.deleteLoan(info.id);
+                fillData();
+                return true;
             case R.id.delete:
                 mDbHelper.deleteLoan(info.id);
                 fillData();
                 return true;
             default:
-            	return super.onContextItemSelected(item);
+                return super.onContextItemSelected(item);
         }
-        
     }
 
     // creating

@@ -15,4 +15,6 @@
     <string name="timeSet">Set Time</string>
     <string name="confirm">Confirm</string>
     <string name="edit_loan">Edit Loan</string>
+    <string name="about_text">About Developers</string>
+    <string name="help_text">Help Text</string>
 </resources>
