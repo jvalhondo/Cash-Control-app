@@ -97,8 +97,9 @@ public class CashControl extends ListActivity {
     	AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
         switch(item.getItemId()) {
             case R.id.edit:
-                mDbHelper.deleteLoan(info.id);
-                fillData();
+            	Intent i = new Intent(this, LoanEdit.class);
+                i.putExtra(LoansDbAdapter.KEY_ROWID, info.id);
+                startActivityForResult(i, ACTIVITY_EDIT);
                 return true;
             case R.id.delete:
                 mDbHelper.deleteLoan(info.id);
