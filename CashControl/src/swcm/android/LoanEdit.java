@@ -3,6 +3,7 @@ package swcm.android;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -14,6 +15,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 public class LoanEdit extends Activity {
 	// for fields Person, Description, Amount
@@ -107,13 +109,32 @@ public class LoanEdit extends Activity {
 		confirmButton.setOnClickListener(new View.OnClickListener() {
 			
 		    public void onClick(View view) {
-		    	setResult(RESULT_OK);
-		    	finish();
+		    	if((mPersonText.getText().toString()).equals("") || (mPersonText.getText().toString()).equals(" ")  ||
+            			(mDescriptionText.getText().toString()).equals("") || (mDescriptionText.getText().toString()).equals(" ") ||
+            			(mAmountText.getText().toString()).equals("") || (mAmountText.getText().toString()).equals(" ") ){
+		    		
+		    		showErrorMessage("Error", "Fields can't be empty");
+		    	}
+		    	
+		    	else{
+		    		setResult(RESULT_OK);
+		    		Toast.makeText(getBaseContext(), "Loan saved",Toast.LENGTH_SHORT).show();
+		    		finish();
+		    	}
 		    }
 		    
 		});
 	} // close onCreate method
 	
+	private void showErrorMessage(String title, String content) {
+		AlertDialog alertDialog;
+		
+		alertDialog = new AlertDialog.Builder(this).create();
+		alertDialog.setTitle(title);
+		alertDialog.setMessage(content);
+		alertDialog.show();
+		
+	}
 	
 	// updates the date we display in the TextView
 	private void updateDateDisplay() {
