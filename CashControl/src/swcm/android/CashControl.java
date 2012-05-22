@@ -52,31 +52,31 @@ public class CashControl extends ListActivity {
         setListAdapter(loans);
     }
 
-    @Override
+    // generate the bottom main menu
     public boolean onCreateOptionsMenu(Menu menu) {
     	MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
     
-    @Override
+    // main menu: bottom menu with add, help, about options
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
+            // Add Loan button clicked
             case R.id.add_newloan:
-                createLoan();
+            	Intent editIntent = new Intent(this, LoanEdit.class);
+                startActivityForResult(editIntent, ACTIVITY_CREATE);
                 return true;
-                
+            // Help button clicked    
             case R.id.help:
-                //poner el metodo que queremos
-            	Intent i = new Intent(this, HelpActivity.class);
-            	startActivity(i);
+            	Intent helpIntent = new Intent(this, HelpActivity.class);
+            	startActivity(helpIntent);
                 return true;
-                
+            // About button clicked   
             case R.id.about:
-            	//poner el metodo que queremos
-            	Intent intent = new Intent(this, AboutActivity.class);
-            	startActivity(intent);
+            	Intent aboutIntent = new Intent(this, AboutActivity.class);
+            	startActivity(aboutIntent);
                 return true;
                 
             default:
@@ -84,7 +84,7 @@ public class CashControl extends ListActivity {
         }
     }
 
-    @Override
+    // generate the context menu when there is a long click on an item of the ListView
     public void onCreateContextMenu(ContextMenu menu, View v,
             ContextMenuInfo menuInfo) {
     	super.onCreateContextMenu(menu, v, menuInfo);
@@ -92,31 +92,29 @@ public class CashControl extends ListActivity {
         inflater.inflate(R.menu.context_menu, menu);
     }
 
-    @Override
+    // context menu: edit or delete an element of the ListView
     public boolean onContextItemSelected(MenuItem item) {
     	AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-        switch(item.getItemId()) {
+    	// Handle item selection
+    	switch(item.getItemId()) {
+    	    // Edit option clicked
             case R.id.edit:
             	Intent i = new Intent(this, LoanEdit.class);
                 i.putExtra(LoansDbAdapter.KEY_ROWID, info.id);
                 startActivityForResult(i, ACTIVITY_EDIT);
                 return true;
+            // Delete option clicked
             case R.id.delete:
                 mDbHelper.deleteLoan(info.id);
                 fillData();
                 return true;
+            
             default:
                 return super.onContextItemSelected(item);
         }
     }
 
-    // creating
-    private void createLoan() {
-        Intent i = new Intent(this, LoanEdit.class);
-        startActivityForResult(i, ACTIVITY_CREATE);
-    }
-
-    // editing/ updating
+    // editing/ updating when an element of the ListWiew is clicked
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         Intent i = new Intent(this, LoanEdit.class);

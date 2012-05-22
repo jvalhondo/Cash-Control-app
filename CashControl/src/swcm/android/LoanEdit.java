@@ -109,7 +109,7 @@ public class LoanEdit extends Activity {
 		confirmButton.setOnClickListener(new View.OnClickListener() {
 			
 		    public void onClick(View view) {
-		    	if((mPersonText.getText().toString()).equals("") || (mPersonText.getText().toString()).equals(" ")  ||
+		    	if( (mPersonText.getText().toString()).equals("") || (mPersonText.getText().toString()).equals(" ")  ||
             			(mDescriptionText.getText().toString()).equals("") || (mDescriptionText.getText().toString()).equals(" ") ||
             			(mAmountText.getText().toString()).equals("") || (mAmountText.getText().toString()).equals(" ") ){
 		    		
@@ -225,22 +225,30 @@ public class LoanEdit extends Activity {
         saveState();
         outState.putSerializable(LoansDbAdapter.KEY_ROWID, mRowId); //AÑADIR LOS OTROS CAMPOS. oN RESTORE INSTANCE STATE
     }
-	
 	 
 	private void saveState() {
 		 String person = mPersonText.getText().toString();
 	     String description = mDescriptionText.getText().toString();
-	     String amount = mAmountText.getText().toString(); //  double B = Double.parseDouble(b.getText().toString()); Por si es double
+	     String amount = mAmountText.getText().toString();
 	     String date = mDateDisplay.getText().toString();
 	     String time = mTimeDisplay.getText().toString();
-
-	     if (mRowId == null) {
-	        long id = mDbHelper.createLoan(person, description, amount, date, time);
-	        if (id > 0) {
-	           mRowId = id;
-	        }
-	     } else {
-	       mDbHelper.updateLoan(mRowId, person, description, amount, date, time); //PARA EVITAR HUECOS
+	     
+	     if( (mPersonText.getText().toString()).equals("") || (mPersonText.getText().toString()).equals(" ")  ||
+     			(mDescriptionText.getText().toString()).equals("") || (mDescriptionText.getText().toString()).equals(" ") ||
+     			(mAmountText.getText().toString()).equals("") || (mAmountText.getText().toString()).equals(" ") ) {
+	    	 
+	    	 showErrorMessage("Error", "Some fileds were empty. Loan not saved");
+	     }
+	     
+	     else {
+	    	 if (mRowId == null) {
+	 	        long id = mDbHelper.createLoan(person, description, amount, date, time);
+	 	        if (id > 0) {
+	 	           mRowId = id;
+	 	        }
+	 	     } else {
+	 	       mDbHelper.updateLoan(mRowId, person, description, amount, date, time);
+	 	     } 
 	     }
 	}
 	
