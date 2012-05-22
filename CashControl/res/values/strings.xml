@@ -14,7 +14,10 @@
     <string name="dateSet">Set Date</string>
     <string name="timeSet">Set Time</string>
     <string name="confirm">Confirm</string>
-    <string name="edit_loan">Edit Loan</string>
+    
+    <string name="help_title">Help</string>
+    <string name="about_title">About</string>
+    <string name="edit_loan_title">Edit Loan</string>
     
     <string name="app_about"> About Application </string>
     <string name="app_version"> v 2.0 </string>

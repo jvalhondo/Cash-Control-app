@@ -50,7 +50,7 @@ public class LoanEdit extends Activity {
 		mDbHelper.open();
 		
 		setContentView(R.layout.loan_edit);
-		setTitle(R.string.edit_loan);
+		setTitle(R.string.edit_loan_title);
 		
 		// capture our Text elements
 		mPersonText = (EditText) findViewById(R.id.person);
