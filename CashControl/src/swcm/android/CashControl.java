@@ -41,10 +41,10 @@ public class CashControl extends ListActivity {
         startManagingCursor(loansCursor);
 
         // Create an array to specify the fields we want to display in the list (only PERSON)
-        String[] from = new String[]{LoansDbAdapter.KEY_PERSON};
+        String[] from = new String[]{LoansDbAdapter.KEY_PERSON, LoansDbAdapter.KEY_AMOUNT};
 
         // and an array of the fields we want to bind those fields to (in this case just text1)
-        int[] to = new int[]{R.id.text1};
+        int[] to = new int[]{R.id.text1, R.id.text2};
 
         // Now create a simple cursor adapter and set it to display
         SimpleCursorAdapter loans = 
