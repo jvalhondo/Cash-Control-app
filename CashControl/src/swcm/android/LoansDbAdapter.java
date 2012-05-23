@@ -18,6 +18,7 @@ import android.util.Log;
  * of using a collection of inner classes (which is less scalable and not
  * recommended).
  */
+
 public class LoansDbAdapter {
 
     public static final String KEY_PERSON = "person";
@@ -34,6 +35,7 @@ public class LoansDbAdapter {
     /**
      * Database creation sql statement
      */
+    
     private static final String DATABASE_CREATE =
         "create table loans (_id integer primary key autoincrement, "
         + "person text not null, description text not null, amount text not null,"
@@ -72,6 +74,7 @@ public class LoansDbAdapter {
      * 
      * @param ctx the Context within which to work
      */
+    
     public LoansDbAdapter(Context ctx) {
         this.mCtx = ctx;
     }
@@ -85,6 +88,7 @@ public class LoansDbAdapter {
      *         initialization call)
      * @throws SQLException if the database could be neither opened or created
      */
+    
     public LoansDbAdapter open() throws SQLException {
         mDbHelper = new DatabaseHelper(mCtx);
         mDb = mDbHelper.getWritableDatabase();
@@ -105,6 +109,7 @@ public class LoansDbAdapter {
      * @param body the body of the note
      * @return rowId or -1 if failed
      */
+    
     public long createLoan(String person, String description, String amount, String date, String time) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_PERSON, person);
@@ -122,6 +127,7 @@ public class LoansDbAdapter {
      * @param rowId id of note to delete
      * @return true if deleted, false otherwise
      */
+    
     public boolean deleteLoan(long rowId) {
 
         return mDb.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null) > 0;
@@ -132,6 +138,7 @@ public class LoansDbAdapter {
      * 
      * @return Cursor over all notes
      */
+    
     public Cursor fetchAllNotes() {
 
         return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_PERSON,
@@ -145,6 +152,7 @@ public class LoansDbAdapter {
      * @return Cursor positioned to matching note, if found
      * @throws SQLException if note could not be found/retrieved
      */
+    
     public Cursor fetchNote(long rowId) throws SQLException {
 
         Cursor mCursor =
@@ -169,6 +177,7 @@ public class LoansDbAdapter {
      * @param body value to set note body to
      * @return true if the note was successfully updated, false otherwise
      */
+    
     public boolean updateLoan(long rowId, String person, String description, String amount, String date, String time) {
         ContentValues args = new ContentValues();
         args.put(KEY_PERSON, person);
