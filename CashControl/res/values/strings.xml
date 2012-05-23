@@ -28,4 +28,14 @@
     <string name="author2"> Eva Suarez Alba</string>    
         
     <string name="help_text">Help Text</string>
+    <string name="app_description">A new way to control your cash from your android smart phone.</string>
+    <string name="how_create">1. If you wanto to create a new entry, you only have to access to de main menu and click on "Add Loan".
+             Then yo can write name, date, hour, description and amount, all the items you need to control the cash you borrow.</string>
+    <string name="how_edit">2.To edit a loan, you have to click on de name of the proper person,so now you have a new view, where you can change the 
+        different field of your loan.</string>
+    <string name="how_delete">3. To delete a loan, you have to click on the loan and select "Delete Loan"</string>
+    <string name="help">4. Moreover in the main menu, yo have two other options: "About"and"Help". About gives you a piece of information about the developers,
+          the version or the system, and Help show you this page.</string>
+    
+    
 </resources>
