@@ -1,7 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/helpText"
+
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center" >
+    
+    
+    <TextView
+        android:id="@+id/help_text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dip"
+        android:layout_marginTop="20dip"
         android:text="@string/help_text" />
+    
+    <TextView
+        android:id="@+id/app_description"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/help_text"
+        android:layout_marginBottom="5dip"
+        android:text="@string/app_description" />
+     
+    <TextView
+        android:id="@+id/how_create"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_description"
+        android:layout_marginBottom="5dip"
+        android:text="@string/how_create" />
+       
+    <TextView
+        android:id="@+id/how_edit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/how_create"
+        android:layout_marginBottom="5dip"
+        android:text="@string/how_edit" />
+       
+    <TextView
+        android:id="@+id/how_delete"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/how_edit"
+        android:layout_marginBottom="5dip"
+        android:text="@string/how_delete" />
+       
+    <TextView
+        android:id="@+id/help"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/how_delete"
+        android:layout_marginBottom="5dip"
+        android:text="@string/help" />
+         
+ 
+       
+    
+</RelativeLayout>
