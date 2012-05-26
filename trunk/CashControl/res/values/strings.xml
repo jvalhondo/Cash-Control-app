@@ -18,6 +18,11 @@
     <string name="help_title">Help</string>
     <string name="about_title">About</string>
     <string name="edit_loan_title">Edit Loan</string>
+    <string name="notification_service_started">Notification Service Started</string>
+    <string name="notification_service_stopped">Notification Service Stopped</string>
+    <string name="notification_service_label">Notification Service Label</string>
+    <string name="notification_service_connected">Notification Service Connected</string>
+    <string name="notification_service_disconnected">Notification Service Disconnected</string>
     
     <string name="app_about"> About Application </string>
     <string name="app_version"> v 2.0 </string>
