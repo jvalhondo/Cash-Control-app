@@ -14,6 +14,12 @@
     <string name="alert_dialog_cancel">Cancel</string>
     <string name="alert_dialog_confirm">Confirm</string>
     
+    <string name="one_shot_received">One shot received</string>
+    <string name="alarm_controller">Alarm Controller</string>
+    <string name="one_shot_alarm">One shot Alarm</string>
+    <string name="one_shot_scheduled">One shot Scheduled</string>
+
+    
     <string name="person">Person</string>
     <string name="description">Description</string>
     <string name="amount">Amount (€)</string>
