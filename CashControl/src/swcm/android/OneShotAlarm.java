@@ -31,6 +31,7 @@ public class OneShotAlarm extends BroadcastReceiver {
 		PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
 
 		notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
+		notification.flags = Notification.FLAG_AUTO_CANCEL;
 
 		// passing the Notification to the NotificationManager
 		mNotificationManager.notify(CASHCONTROL_ID, notification);
