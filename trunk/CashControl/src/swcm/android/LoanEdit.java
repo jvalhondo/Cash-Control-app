@@ -153,12 +153,12 @@ public class LoanEdit extends Activity {
 	
 	// check the alarm is set right
 	private boolean correctAlarmSet() {
-		/*if( mYear < yearRightNow) return false;
-		else if ( mMonth < monthRightNow & mYear == yearRightNow ) return false;
-		else if ( mDay < dayRightNow & (mMonth == monthRightNow & mYear == yearRightNow )) return false;
-		else if ( mHour < hourRightNow & (mDay == dayRightNow & mMonth == monthRightNow & mYear == yearRightNow )) return false;
-		else if ( mMinute < minuteRightNow & (mHour == hourRightNow & mDay == dayRightNow & mMonth == monthRightNow & mYear == yearRightNow )) return false;*/
-	    return true;
+		if( mYear < yearRightNow) return false;
+		else if ( mMonth+1 < monthRightNow & mYear == yearRightNow ) return false;
+		else if ( mDay < dayRightNow & (mMonth+1 == monthRightNow & mYear == yearRightNow )) return false;
+		else if ( mHour < hourRightNow & (mDay == dayRightNow & mMonth+1 == monthRightNow & mYear == yearRightNow )) return false;
+		else if ( mMinute < minuteRightNow & (mHour == hourRightNow & mDay == dayRightNow & mMonth+1 == monthRightNow & mYear == yearRightNow )) return false;	
+		return true;
 	}
 	
 	// check fields are not empty before confirm
