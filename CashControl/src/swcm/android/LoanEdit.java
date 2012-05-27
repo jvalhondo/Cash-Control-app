@@ -44,6 +44,14 @@ public class LoanEdit extends Activity {
     private int mHour;
     private int mMinute;
     static final int TIME_DIALOG_ID = 1;
+    
+    private Calendar rightNow = Calendar.getInstance();
+	private int yearRightNow = rightNow.get(Calendar.YEAR);
+	// Month is 0 based so add 1
+	private int monthRightNow = rightNow.get(Calendar.MONTH) + 1;
+	private int dayRightNow = rightNow.get(Calendar.DAY_OF_MONTH);
+	private int hourRightNow = rightNow.get(Calendar.HOUR_OF_DAY);
+	private int minuteRightNow = rightNow.get(Calendar.MINUTE);
 
     
 	@Override
@@ -74,6 +82,7 @@ public class LoanEdit extends Activity {
         // get the current date
         final Calendar dateCalendar = Calendar.getInstance();
         mYear = dateCalendar.get(Calendar.YEAR);
+        // Month is 0 based so add 1
         mMonth = dateCalendar.get(Calendar.MONTH);
         mDay = dateCalendar.get(Calendar.DAY_OF_MONTH);
         // display the current date
@@ -113,14 +122,28 @@ public class LoanEdit extends Activity {
 		confirmButton.setOnClickListener(new View.OnClickListener() {
 			
 		    public void onClick(View view) {
+	    		
 		    	if( (mPersonText.getText().toString()).equals("") || (mPersonText.getText().toString()).equals(" ")  ||
             			(mDescriptionText.getText().toString()).equals("") || (mDescriptionText.getText().toString()).equals(" ") ||
             			(mAmountText.getText().toString()).equals("") || (mAmountText.getText().toString()).equals(" ") ){
 		    		
 		    		showErrorMessage("Error", "Fields can't be empty");
-		    	}
-		    	
-		    	else{
+		    		
+		    	} else if( correctAlarmSet() == false ) { 
+		    		// Month is 0 based so add 1
+		    		int mMonthError = mMonth + 1;
+		    		// adding a 0 if minutes or hours are between 0 or 9 included
+		    		String mHourError = pad(mHour);
+		    		String mMinuteError = pad(mMinute);
+		    		String hourRightNowError = pad(hourRightNow);
+		    		String minuteRightNowError = pad(minuteRightNow);
+		    		
+		    		showErrorMessage("Error: Alarm set not right", "Alarm set: " + mMonthError	+ "-" + mDay
+		    				+ "-" + mYear + " at " + mHourError + ":" + mMinuteError
+		    				+ " and today is: " + monthRightNow	+ "-" +dayRightNow + "-"
+		    				+ yearRightNow + " at " + hourRightNowError + ":" + minuteRightNowError );
+		    			
+		    	} else{
 		    		setResult(RESULT_OK);
 		    		Toast.makeText(getBaseContext(), "Loan saved",Toast.LENGTH_SHORT).show();
 		    		finish();
@@ -130,37 +153,42 @@ public class LoanEdit extends Activity {
 		});
 	} // close onCreate method
 	
+	private boolean correctAlarmSet() {
+	/*	if( mYear < yearRightNow) {
+			return false;
+		} else if ( mMonth < monthRightNow & mYear == yearRightNow ) {
+			return false;
+		} else if ( mDay < dayRightNow & mMonth == monthRightNow & mYear == yearRightNow ) {
+			return false;
+		} else if ( mHour < hourRightNow & mDay == dayRightNow & mMonth == monthRightNow & mYear == yearRightNow ) {
+			return false;
+		} else if ( mMinute < minuteRightNow & mHour == hourRightNow & mDay == dayRightNow & mMonth == monthRightNow & mYear == yearRightNow ) {
+			return false;
+		} else*/ 
+		return true;
+	}
+	
 	private void upDateNotifications() {
 		
-		if (mRowId==null){
-			saveState();
-		}
-		
-		//mAlarms=0;
-		Calendar rightNow = Calendar.getInstance();
-		Calendar calendar;
-		
-		int yearRightNow = rightNow.get(Calendar.YEAR);
-		int monthRightNow = rightNow.get(Calendar.MONTH);
-		int dayRightNow = rightNow.get(Calendar.DAY_OF_WEEK);
-		
-		Toast.makeText(getBaseContext(), "upDateNotifications " + dayRightNow
-				+ " " +monthRightNow + " " + yearRightNow ,Toast.LENGTH_SHORT).show();
-		if( mYear < yearRightNow || mMonth < monthRightNow || mDay < dayRightNow ) {
-			Toast.makeText(getBaseContext(), "Alarm set not right", Toast.LENGTH_SHORT).show();
-		}
-		
-		calendar = Calendar.getInstance();
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTimeInMillis(System.currentTimeMillis());
+		// setting alarm date
+		calendar.set(Calendar.MONTH, mMonth);
+		calendar.set(Calendar.DAY_OF_MONTH, mDay);
+		calendar.set(Calendar.YEAR, mYear);
+		// setting alarm time
 		calendar.set(Calendar.HOUR_OF_DAY, mHour);
 		calendar.set(Calendar.MINUTE, mMinute);
 		calendar.set(Calendar.SECOND, 0);
 		calendar.set(Calendar.MILLISECOND, 0);
+		// We want the alarm to go off 30 seconds from now.
+        //calendar.add(Calendar.SECOND, 30);
 		
-		Intent intent = new Intent(LoanEdit.this, OneShotAlarm.class);
-		PendingIntent sender = PendingIntent.getBroadcast(LoanEdit.this,
-                0, intent, 0);
-		AlarmManager am = (AlarmManager) LoanEdit.this.getSystemService(Context.ALARM_SERVICE);
-		am.set(AlarmManager.RTC_WAKEUP, rightNow.getTimeInMillis(), sender);
+		Intent alarmIntent = new Intent(this, OneShotAlarm.class);
+		PendingIntent pendingIntentSender = PendingIntent.getBroadcast(this,
+                0, alarmIntent, 0);
+		AlarmManager alarmManager = (AlarmManager) LoanEdit.this.getSystemService(Context.ALARM_SERVICE);
+		alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntentSender);
 		
 		
 		
@@ -211,7 +239,7 @@ public class LoanEdit extends Activity {
 	private void updateDateDisplay() {
 		mDateDisplay.setText(
 	            new StringBuilder()
-	                    // Month is 0 based so add 1
+	            		// Month is 0 based so add 1
 	                    .append(mMonth + 1).append("-")
 	                    .append(mDay).append("-")
 	                    .append(mYear).append(" "));

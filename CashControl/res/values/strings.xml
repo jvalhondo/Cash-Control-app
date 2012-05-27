@@ -23,18 +23,13 @@
     <string name="person">Person</string>
     <string name="description">Description</string>
     <string name="amount">Amount (€)</string>
-    <string name="dateSet">Set Date</string>
-    <string name="timeSet">Set Time</string>
+    <string name="dateSet">Set Alarm Date</string>
+    <string name="timeSet">Set Alarm Time</string>
     <string name="confirm">Confirm</string>
     
     <string name="help_title">Help</string>
     <string name="about_title">About</string>
     <string name="edit_loan_title">Edit Loan</string>
-    <string name="notification_service_started">Notification Service Started</string>
-    <string name="notification_service_stopped">Notification Service Stopped</string>
-    <string name="notification_service_label">Notification Service Label</string>
-    <string name="notification_service_connected">Notification Service Connected</string>
-    <string name="notification_service_disconnected">Notification Service Disconnected</string>
     
     <string name="app_about"> About Application </string>
     <string name="app_version"> v 2.0 </string>
