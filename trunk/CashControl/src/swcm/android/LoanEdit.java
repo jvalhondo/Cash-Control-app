@@ -123,9 +123,7 @@ public class LoanEdit extends Activity {
 			
 		    public void onClick(View view) {
 	    		
-		    	if( (mPersonText.getText().toString()).equals("") || (mPersonText.getText().toString()).equals(" ")  ||
-            			(mDescriptionText.getText().toString()).equals("") || (mDescriptionText.getText().toString()).equals(" ") ||
-            			(mAmountText.getText().toString()).equals("") || (mAmountText.getText().toString()).equals(" ") ){
+		    	if( someFieldsEmpty() == true ){
 		    		
 		    		showErrorMessage("Error", "Fields can't be empty");
 		    		
@@ -153,21 +151,29 @@ public class LoanEdit extends Activity {
 		});
 	} // close onCreate method
 	
+	// check the alarm is set right
 	private boolean correctAlarmSet() {
-	/*	if( mYear < yearRightNow) {
-			return false;
-		} else if ( mMonth < monthRightNow & mYear == yearRightNow ) {
-			return false;
-		} else if ( mDay < dayRightNow & mMonth == monthRightNow & mYear == yearRightNow ) {
-			return false;
-		} else if ( mHour < hourRightNow & mDay == dayRightNow & mMonth == monthRightNow & mYear == yearRightNow ) {
-			return false;
-		} else if ( mMinute < minuteRightNow & mHour == hourRightNow & mDay == dayRightNow & mMonth == monthRightNow & mYear == yearRightNow ) {
-			return false;
-		} else*/ 
-		return true;
+		if( mYear < yearRightNow) return false;
+		else if ( mMonth < monthRightNow & mYear == yearRightNow ) return false;
+		else if ( mDay < dayRightNow & (mMonth == monthRightNow & mYear == yearRightNow )) return false;
+		else if ( mHour < hourRightNow & (mDay == dayRightNow & mMonth == monthRightNow & mYear == yearRightNow )) return false;
+		else if ( mMinute < minuteRightNow & (mHour == hourRightNow & mDay == dayRightNow & mMonth == monthRightNow & mYear == yearRightNow )) return false;
+	    return true;
 	}
 	
+	// check fields are not empty before confirm
+	private boolean someFieldsEmpty() {
+		
+		if( (mPersonText.getText().toString()).equals("") || (mPersonText.getText().toString()).equals(" ")  ||
+    			(mDescriptionText.getText().toString()).equals("") || (mDescriptionText.getText().toString()).equals(" ") ||
+    			(mAmountText.getText().toString()).equals("") || (mAmountText.getText().toString()).equals(" ") ){
+			
+			return true;
+		}
+		return false;
+	}
+	
+	// Update Alarms that has been set
 	private void upDateNotifications() {
 		
 		Calendar calendar = Calendar.getInstance();
@@ -189,42 +195,9 @@ public class LoanEdit extends Activity {
                 0, alarmIntent, 0);
 		AlarmManager alarmManager = (AlarmManager) LoanEdit.this.getSystemService(Context.ALARM_SERVICE);
 		alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntentSender);
-		
-		
-		
-
-		/* for (int i=0; i<mArrayDays.length;i++){
-			if ((day-1+i)==mArrayDays.length) day=day-7;
-			if(mArrayDays[day-1+i]){
-				String h;
-				int hourOfDay;
-				int min;
-
-				for (int j=0; j<mArrayHours.size(); j++){
-					h=mArrayHours.get(j);
-					hourOfDay= Integer.parseInt(h.split(":")[0]);
-					min= Integer.parseInt(h.split(":")[1]);
-					currentDay=Calendar.getInstance();
-					currentDay.set(Calendar.HOUR_OF_DAY, hourOfDay);
-					currentDay.set(Calendar.MINUTE, min);
-					currentDay.set(Calendar.SECOND, 0);
-					currentDay.set(Calendar.MILLISECOND, 0);
-					if (i==0 && currentDay.get(Calendar.HOUR_OF_DAY) < Calendar.getInstance().get(Calendar.HOUR_OF_DAY) || (currentDay.get(Calendar.MINUTE) <= Calendar.getInstance().get(Calendar.MINUTE) &&currentDay.get(Calendar.HOUR_OF_DAY) == Calendar.getInstance().get(Calendar.HOUR_OF_DAY)))
-						currentDay.add(Calendar.DAY_OF_YEAR, i+7);
-					else
-						currentDay.add(Calendar.DAY_OF_YEAR, i);
-					long firstTime= currentDay.getTimeInMillis();
-					PendingIntent sender = PendingIntent.getBroadcast(this,
-							 mRowId.intValue()*10000+ mAlarms, intent, 0);
-
-					AlarmManager am = (AlarmManager) PillEdit.this.getSystemService(Context.ALARM_SERVICE);
-					am.setRepeating(AlarmManager.RTC_WAKEUP, firstTime, 7*24*3600*1000, sender);
-					mAlarms++;
-				}
-			}
-		}*/	
 	}
 	
+	// is call when an error should be alert
 	private void showErrorMessage(String title, String content) {
 		AlertDialog alertDialog;
 		
@@ -232,7 +205,6 @@ public class LoanEdit extends Activity {
 		alertDialog.setTitle(title);
 		alertDialog.setMessage(content);
 		alertDialog.show();
-		
 	}
 	
 	// updates the date we display in the TextView
@@ -266,8 +238,7 @@ public class LoanEdit extends Activity {
 	 	switch (id) {
 	    case DATE_DIALOG_ID:
 	         return new DatePickerDialog(this,
-	                     mDateSetListener,
-	                     mYear, mMonth, mDay);
+	                     mDateSetListener, mYear, mMonth, mDay);
 	    case TIME_DIALOG_ID:
 	         return new TimePickerDialog(this,
 	                 mTimeSetListener, mHour, mMinute, false);
@@ -299,7 +270,7 @@ public class LoanEdit extends Activity {
 	        }
 	    };
 	    
-
+	
 	private void populateFields() {
 	   if (mRowId != null) {
 		  Cursor loanCursor = mDbHelper.fetchNote(mRowId);
@@ -322,7 +293,7 @@ public class LoanEdit extends Activity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         saveState();
-        outState.putSerializable(LoansDbAdapter.KEY_ROWID, mRowId); //AÑADIR LOS OTROS CAMPOS. oN RESTORE INSTANCE STATE
+        outState.putSerializable(LoansDbAdapter.KEY_ROWID, mRowId);
     }
 	 
 	private void saveState() {
@@ -332,9 +303,7 @@ public class LoanEdit extends Activity {
 	     String date = mDateDisplay.getText().toString();
 	     String time = mTimeDisplay.getText().toString();
 	     
-	     if( (mPersonText.getText().toString()).equals("") || (mPersonText.getText().toString()).equals(" ")  ||
-     			(mDescriptionText.getText().toString()).equals("") || (mDescriptionText.getText().toString()).equals(" ") ||
-     			(mAmountText.getText().toString()).equals("") || (mAmountText.getText().toString()).equals(" ") ) {
+	     if( someFieldsEmpty() == true ) {
 	    	 
 	    	 showErrorMessage("Error", "Some fileds were empty. Loan not saved");
 	     }
@@ -350,7 +319,6 @@ public class LoanEdit extends Activity {
 	 	     } 
 	     }
 	}
-	
 
 	@Override
 	protected void onPause() {

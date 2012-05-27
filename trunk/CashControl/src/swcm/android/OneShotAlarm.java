@@ -22,16 +22,11 @@ public class OneShotAlarm extends BroadcastReceiver {
 		CharSequence tickerText = "Remember that you lent some money!";
 		long when = System.currentTimeMillis();
 		
-		//Calendar calendar= Calendar.getInstance();
-		//String hour = calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE);
-		// System.out.println(hour);
-		
 		Notification notification = new Notification(icon, tickerText, when);
 
 		CharSequence contentTitle = "Cash Control";
 		CharSequence contentText = "It's time to get your money back!";
 		Intent notificationIntent = new Intent(context, CashControl.class);
-		//notificationIntent.putExtra("hour", hour);
 		
 		PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
 
