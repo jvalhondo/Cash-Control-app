@@ -1,24 +1,43 @@
 package swcm.android;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.BroadcastReceiver;
-import android.widget.Toast;
 
-//Need the following import to get access to the app resources, since this
-//class is in a sub-package.
-import swcm.android.R;
-
-/**
- * This is an example of implement an {@link BroadcastReceiver} for an alarm that
- * should occur once.
- * <p>
- * When the alarm goes off, we show a <i>Toast</i>, a quick message.
- */
 public class OneShotAlarm extends BroadcastReceiver {
+	String ns = Context.NOTIFICATION_SERVICE;
+	NotificationManager mNotificationManager;
+	
+	private static final int CASHCONTROL_ID = 1;
+	
     @Override
     public void onReceive(Context context, Intent intent) {
-    	
-        Toast.makeText(context, R.string.one_shot_received, Toast.LENGTH_SHORT).show();
+    	mNotificationManager= (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+    	// creating a Notification
+		int icon = R.drawable.piggy_bank_icon;
+		CharSequence tickerText = "Remember that you lent some money!";
+		long when = System.currentTimeMillis();
+		
+		//Calendar calendar= Calendar.getInstance();
+		//String hour = calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE);
+		// System.out.println(hour);
+		
+		Notification notification = new Notification(icon, tickerText, when);
+
+		CharSequence contentTitle = "Cash Control";
+		CharSequence contentText = "It's time to get your money back!";
+		Intent notificationIntent = new Intent(context, CashControl.class);
+		//notificationIntent.putExtra("hour", hour);
+		
+		PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
+
+		notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
+
+		// passing the Notification to the NotificationManager
+		mNotificationManager.notify(CASHCONTROL_ID, notification);
     }
 }

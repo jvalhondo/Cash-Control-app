@@ -3,10 +3,14 @@ package swcm.android;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -120,11 +124,78 @@ public class LoanEdit extends Activity {
 		    		setResult(RESULT_OK);
 		    		Toast.makeText(getBaseContext(), "Loan saved",Toast.LENGTH_SHORT).show();
 		    		finish();
+		    		upDateNotifications();
 		    	}
-		    }
-		    
+		    }    
 		});
 	} // close onCreate method
+	
+	private void upDateNotifications() {
+		
+		if (mRowId==null){
+			saveState();
+		}
+		
+		//mAlarms=0;
+		Calendar rightNow = Calendar.getInstance();
+		Calendar calendar;
+		
+		int yearRightNow = rightNow.get(Calendar.YEAR);
+		int monthRightNow = rightNow.get(Calendar.MONTH);
+		int dayRightNow = rightNow.get(Calendar.DAY_OF_WEEK);
+		
+		Toast.makeText(getBaseContext(), "upDateNotifications " + dayRightNow
+				+ " " +monthRightNow + " " + yearRightNow ,Toast.LENGTH_SHORT).show();
+		if( mYear < yearRightNow || mMonth < monthRightNow || mDay < dayRightNow ) {
+			Toast.makeText(getBaseContext(), "Alarm set not right", Toast.LENGTH_SHORT).show();
+		}
+		
+		calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY, mHour);
+		calendar.set(Calendar.MINUTE, mMinute);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.set(Calendar.MILLISECOND, 0);
+		
+		Intent intent = new Intent(LoanEdit.this, OneShotAlarm.class);
+		PendingIntent sender = PendingIntent.getBroadcast(LoanEdit.this,
+                0, intent, 0);
+		AlarmManager am = (AlarmManager) LoanEdit.this.getSystemService(Context.ALARM_SERVICE);
+		am.set(AlarmManager.RTC_WAKEUP, rightNow.getTimeInMillis(), sender);
+		
+		
+		
+
+		/* for (int i=0; i<mArrayDays.length;i++){
+			if ((day-1+i)==mArrayDays.length) day=day-7;
+			if(mArrayDays[day-1+i]){
+				String h;
+				int hourOfDay;
+				int min;
+
+				for (int j=0; j<mArrayHours.size(); j++){
+					h=mArrayHours.get(j);
+					hourOfDay= Integer.parseInt(h.split(":")[0]);
+					min= Integer.parseInt(h.split(":")[1]);
+					currentDay=Calendar.getInstance();
+					currentDay.set(Calendar.HOUR_OF_DAY, hourOfDay);
+					currentDay.set(Calendar.MINUTE, min);
+					currentDay.set(Calendar.SECOND, 0);
+					currentDay.set(Calendar.MILLISECOND, 0);
+					if (i==0 && currentDay.get(Calendar.HOUR_OF_DAY) < Calendar.getInstance().get(Calendar.HOUR_OF_DAY) || (currentDay.get(Calendar.MINUTE) <= Calendar.getInstance().get(Calendar.MINUTE) &&currentDay.get(Calendar.HOUR_OF_DAY) == Calendar.getInstance().get(Calendar.HOUR_OF_DAY)))
+						currentDay.add(Calendar.DAY_OF_YEAR, i+7);
+					else
+						currentDay.add(Calendar.DAY_OF_YEAR, i);
+					long firstTime= currentDay.getTimeInMillis();
+					PendingIntent sender = PendingIntent.getBroadcast(this,
+							 mRowId.intValue()*10000+ mAlarms, intent, 0);
+
+					AlarmManager am = (AlarmManager) PillEdit.this.getSystemService(Context.ALARM_SERVICE);
+					am.setRepeating(AlarmManager.RTC_WAKEUP, firstTime, 7*24*3600*1000, sender);
+					mAlarms++;
+				}
+			}
+		}*/	
+	}
 	
 	private void showErrorMessage(String title, String content) {
 		AlertDialog alertDialog;
