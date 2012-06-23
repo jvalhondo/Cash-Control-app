@@ -7,11 +7,11 @@
           android:title="@string/menu_insert" />
     
     <item android:id="@+id/help"
-          android:icon="@drawable/addloan_icon"
+          android:icon="@drawable/help_icon"
           android:title="@string/menu_help" />
     
     <item android:id="@+id/about"
-          android:icon="@drawable/addloan_icon"
+          android:icon="@drawable/about_icon"
           android:title="@string/menu_about" />
     
 </menu>

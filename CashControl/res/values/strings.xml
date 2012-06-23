@@ -4,6 +4,9 @@
     <string name="app_name">Cash Control</string>
     <string name="no_loans">No Loans Yet</string>
     
+    <string name="table_contact">Contact</string>
+    <string name="table_amount">Amount</string>
+    
     <string name="menu_insert">Add Loan</string>
     <string name="menu_edit">Edit Loan</string>
     <string name="menu_help">Help</string>
