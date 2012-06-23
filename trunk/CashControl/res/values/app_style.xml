@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
+    
     <color name="custom_theme_color">#b0b0ff</color>
     <color name="translucent_red">#80ff0000</color>
 
