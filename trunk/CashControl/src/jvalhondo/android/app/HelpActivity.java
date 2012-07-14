@@ -1,6 +1,6 @@
 package jvalhondo.android.app;
 
-import swcm.android.R;
+import jvalhondo.android.app.R;
 import android.app.Activity;
 import android.os.Bundle;
 

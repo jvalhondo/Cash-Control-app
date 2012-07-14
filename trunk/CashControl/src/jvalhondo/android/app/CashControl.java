@@ -1,6 +1,6 @@
 package jvalhondo.android.app;
 
-import swcm.android.R;
+import jvalhondo.android.app.R;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
