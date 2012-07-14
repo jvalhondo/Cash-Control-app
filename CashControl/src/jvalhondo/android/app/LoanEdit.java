@@ -1,9 +1,7 @@
 package jvalhondo.android.app;
 
 import java.util.Calendar;
-
 import jvalhondo.android.app.R;
-
 
 import android.app.Activity;
 import android.app.AlarmManager;
