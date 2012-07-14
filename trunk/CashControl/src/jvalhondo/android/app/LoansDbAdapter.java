@@ -1,4 +1,4 @@
-package swcm.android;
+package jvalhondo.android.app;
 
 import android.content.ContentValues;
 import android.content.Context;
