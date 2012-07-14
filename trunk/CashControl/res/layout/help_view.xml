@@ -15,31 +15,37 @@
     
     
     	<TextView
+	        style="@style/HelpStyle"
         	android:id="@+id/help_text"
         	android:layout_marginTop="20dip"
         	android:text="@string/help_text" />
     
     	<TextView
+	        style="@style/HelpStyle"
         	android:id="@+id/app_description"
         	android:layout_below="@id/help_text"
         	android:text="@string/app_description" />
      
     	<TextView
+	        style="@style/HelpStyle"
         	android:id="@+id/how_create"
         	android:layout_below="@id/app_description"
         	android:text="@string/how_create" />
        
     	<TextView
+	        style="@style/HelpStyle"
         	android:id="@+id/how_edit"
         	android:layout_below="@id/how_create"  
         	android:text="@string/how_edit" />
 	       
     	<TextView
+	        style="@style/HelpStyle"
         	android:id="@+id/how_delete"
         	android:layout_below="@id/how_edit"
         	android:text="@string/how_delete" />
        
     	<TextView
+	        style="@style/HelpStyle"
         	android:id="@+id/help"
         	android:layout_below="@id/how_delete"
         	android:text="@string/help" />        

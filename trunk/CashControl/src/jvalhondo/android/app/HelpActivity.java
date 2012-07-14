@@ -1,8 +1,8 @@
 package jvalhondo.android.app;
 
-import jvalhondo.android.app.R;
 import android.app.Activity;
 import android.os.Bundle;
+import jvalhondo.android.app.R;
 
 public class HelpActivity extends Activity {
 	@Override

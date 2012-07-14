@@ -1,12 +1,12 @@
 package jvalhondo.android.app;
 
-import jvalhondo.android.app.R;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import jvalhondo.android.app.R;
 
 public class OneShotAlarm extends BroadcastReceiver {
 	String ns = Context.NOTIFICATION_SERVICE;

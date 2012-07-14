@@ -1,6 +1,5 @@
 package jvalhondo.android.app;
 
-import jvalhondo.android.app.R;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
@@ -16,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import jvalhondo.android.app.R;
 
 public class CashControl extends ListActivity {
     private static final int ACTIVITY_CREATE = 0;
