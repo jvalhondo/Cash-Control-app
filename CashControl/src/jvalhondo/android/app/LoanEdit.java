@@ -1,6 +1,8 @@
-package swcm.android;
+package jvalhondo.android.app;
 
 import java.util.Calendar;
+
+import swcm.android.R;
 
 import android.app.Activity;
 import android.app.AlarmManager;
