@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<!-- =============================================================== -->
- 	<!-- White styles                                                    -->
+ 	<!-- App theme                                                       -->
 	<!-- =============================================================== -->
 
 	<dimen name="content_left_margin_wh">8sp</dimen>
 	<color name="custom_theme_color">#b0b0ff</color>
-	<style name="ThemeWhite" parent="android:Theme.Light">
-		<item name="android:windowBackground">@style/color_background_white</item>
-    	<item name="android:colorBackground">@style/color_background_white</item>
-		<item name="list">@style/list_white</item>
-		<item name="listDivider">@style/list_divider_white</item>
+	
+	<style name="AppTheme" parent="android:Theme.Light">
+		<item name="android:windowBackground">@style/window_background</item>
+    	<item name="android:colorBackground">@style/color_background</item>
+		<item name="list">@style/list</item>
+		<item name="listDivider">@style/list_divider</item>
 	</style>
  	
-	<style name="color_background_white">
+	<style name="window_background">
+ 		<item name="android:background">@drawable/gray_gradient_background</item>
+ 	</style>
+	
+	<style name="color_background">
 		<item name="android:background">@drawable/white_container_wh</item>
 		<item name="android:padding">10sp</item>
 	</style>
 	
-	<style name="window_background_white">
- 		<item name="android:background">@drawable/gray_gradient_background</item>
- 	</style>
-	
-	<style name="list_white">
+	<style name="list">
 		<item name="android:background">@drawable/white_container_wh</item>
 		<item name="android:paddingTop">15sp</item>
 		<item name="android:paddingBottom">15sp</item>
@@ -37,7 +38,7 @@
 		<item name="android:scrollbars">vertical</item>
 	</style>
 	
-	<style name="list_divider_white">
+	<style name="list_divider">
 		<item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">1dip</item>
 		<item name="android:layout_marginTop">4dip</item>
