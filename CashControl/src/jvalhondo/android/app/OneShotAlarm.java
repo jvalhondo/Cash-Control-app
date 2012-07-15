@@ -1,5 +1,6 @@
-package swcm.android;
+package jvalhondo.android.app;
 
+import jvalhondo.android.app.R;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
