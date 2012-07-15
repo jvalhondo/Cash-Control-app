@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item android:id="@+id/add_newloan"
+          android:icon="@drawable/addloan_icon"
+          android:title="@string/menu_insert" />
+    
+    <item android:id="@+id/help"
+          android:icon="@drawable/help_icon"
+          android:title="@string/menu_help" />
+    
+    <item android:id="@+id/about"
+          android:icon="@drawable/about_icon"
+          android:title="@string/menu_about" />
+    
+</menu>
