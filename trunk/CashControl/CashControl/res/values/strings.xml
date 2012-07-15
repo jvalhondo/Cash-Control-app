@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">Cash Control</string>
+    <string name="no_loans">No Loans Yet</string>
+    
+    <string name="table_contact">Contact</string>
+    <string name="table_amount">Amount</string>
+    
+    <string name="menu_insert">Add Loan</string>
+    <string name="menu_edit">Edit Loan</string>
+    <string name="menu_help">Help</string>
+    <string name="menu_about">About</string>
+    <string name="menu_delete">Delete Loan</string>
+    <string name="context_menu_title">Choose an option:</string>
+    <string name="delete_confirm_question">Are you sure you want to delete this item?</string>
+    <string name="alert_dialog_cancel">Cancel</string>
+    <string name="alert_dialog_confirm">Confirm</string>
+    
+    <string name="one_shot_received">One shot received</string>
+    <string name="alarm_controller">Alarm Controller</string>
+    <string name="one_shot_alarm">One shot Alarm</string>
+    <string name="one_shot_scheduled">One shot Scheduled</string>
+
+    
+    <string name="person">Person</string>
+    <string name="description">Description</string>
+    <string name="amount">Amount (€)</string>
+    <string name="dateSet">Set Alarm Date</string>
+    <string name="timeSet">Set Alarm Time</string>
+    <string name="confirm">Confirm</string>
+    
+    <string name="help_title">Help</string>
+    <string name="about_title">About</string>
+    <string name="edit_loan_title">Edit Loan</string>
+    
+    <string name="app_about"> About Application </string>
+    <string name="app_version"> v 2.0 </string>
+    <string name="app_date"> 25/05/2012</string>
+    <string name="app_system"> Android 2.3.3</string>
+    <string name="about_text"> Developerers:</string>
+    <string name="author1"> Jorge Valhondo Rama</string>
+    <string name="author2"> Eva Suarez Alba</string>    
+        
+    <string name="help_text">Help Text</string>
+    <string name="app_description">A new way to control your cash from your android smart phone.</string>
+    <string name="how_create">1. If you want to create a new entry, you only have to access to the main menu and click on "Add Loan".
+             Then you can write name, date, hour, description and amount, all the items you need to control the cash you borrow.</string>
+    <string name="how_edit">2.To edit a loan, you have to click on the name of the proper person,so now you have a new view, where you can change the 
+        different field of your loan.</string>
+    <string name="how_delete">3. To delete a loan, you have to click on the loan and select "Delete Loan"</string>
+    <string name="help">4. Moreover in the main menu, you have two other options: "About"and"Help". About gives you a piece of information about the developers,
+          the version or the system, and Help show you this page.</string>
+    
+    
+</resources>
