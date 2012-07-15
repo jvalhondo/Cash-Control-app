@@ -1,25 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<style name="ThemeWhite" parent="android:Theme">
-		
-		<item name="android:windowTitleSize">20dip</item>
-		<item name="pageBackground">@style/page_background_wh</item>
-		<item name="pagePaddingLayout">@style/page_padding_layout_wh</item>		
-		<item name="textTitle">@style/text_title_wh</item>
-		<item name="textTitleHidden">@style/text_title_hidden_wh</item>
-		<item name="textSubheader">@style/text_subheader_wh</item>
-		<item name="textLarge">@style/text_large_wh</item>
-		<item name="textRegular">@style/text_regular_wh</item>
-		<item name="textCheckBox">@style/text_check_box_wh</item>
-		<item name="textCurrentActivityGreen">@style/text_current_activity_green_wh</item>
-		<item name="whiteBackground">@style/white_background_wh</item>
-		<item name="button">@style/button_wh</item>
-		<item name="list">@style/list_wh</item>
-		<item name="listItem">@style/list_item_wh</item>
-		<item name="listDivider">@style/list_divider_wh</item>
-		<item name="pageMargin">@dimen/page_margin_wh</item>
-		
+	<color name="custom_theme_color">#b0b0ff</color>
+	<style name="CustomTheme" parent="android:Theme.Light">
+    	<item name="android:windowBackground">@color/custom_theme_color</item>
+    	<item name="android:colorBackground">@color/custom_theme_color</item>
 	</style>
 
 </resources>
