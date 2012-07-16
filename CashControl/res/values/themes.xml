@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<color name="custom_theme_color">#b0b0ff</color>
-	<style name="CustomTheme" parent="android:Theme.Light">
-    	<item name="android:windowBackground">@color/custom_theme_color</item>
-    	<item name="android:colorBackground">@color/custom_theme_color</item>
+	<style name="CashControlTheme" parent="android:Theme.Light">
+    	<item name="android:windowBackground">@color/bright_purple</item>
+    	<item name="android:colorBackground">@color/bright_purple</item>
 	</style>
 
 </resources>
