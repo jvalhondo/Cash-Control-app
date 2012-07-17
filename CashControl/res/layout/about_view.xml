@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/background"
-    android:gravity="center" >
-    
-    
+    android:layout_height="fill_parent"
+    android:background="@drawable/background" >
     <TextView
         android:id="@+id/app_about"
         android:layout_width="fill_parent"
@@ -14,7 +10,6 @@
         android:layout_marginBottom="5dip"
         android:layout_marginTop="20dip"
         android:text="@string/app_about" />
-    
     <TextView
         android:id="@+id/app_version"
         android:layout_width="fill_parent"
@@ -22,7 +17,6 @@
         android:layout_below="@id/app_about"
         android:layout_marginBottom="5dip"
         android:text="@string/app_version" />
-     
     <TextView
         android:id="@+id/app_date"
         android:layout_width="fill_parent"
@@ -30,7 +24,6 @@
         android:layout_below="@id/app_version"
         android:layout_marginBottom="5dip"
         android:text="@string/app_date" />
-       
     <TextView
         android:id="@+id/app_system"
         android:layout_width="fill_parent"
@@ -38,7 +31,6 @@
         android:layout_below="@id/app_date"
         android:layout_marginBottom="5dip"
         android:text="@string/app_system" />
-       
     <TextView
         android:id="@+id/about_text"
         android:layout_width="fill_parent"
@@ -46,15 +38,13 @@
         android:layout_below="@id/app_system"
         android:layout_marginBottom="5dip"
         android:text="@string/about_text" />
-       
     <TextView
         android:id="@+id/author1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/about_text"
         android:layout_marginBottom="5dip"
-        android:text="@string/author1" />
-         
+        android:text="@string/author1" />   
     <TextView
         android:id="@+id/author2"
         android:layout_width="fill_parent"
@@ -62,6 +52,4 @@
         android:layout_below="@id/author1"
         android:layout_marginBottom="5dip"
         android:text="@string/author2" />
-       
-    
 </RelativeLayout>

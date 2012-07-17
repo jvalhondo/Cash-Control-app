@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/scrollView2"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/background"
     android:layout_alignParentRight="true"
     android:layout_alignParentTop="true"
-    android:layout_marginRight="5dp" >
-        
+    android:layout_marginRight="1dp" >    
  	<RelativeLayout 
     	android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
-    	android:background="@drawable/background"
-    	android:gravity="center" >
-    
-    
+    	android:layout_height="wrap_content" >
     	<TextView
         	android:id="@+id/help_text"
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
         	android:layout_marginTop="20dip"
         	android:text="@string/help_text" />
-    
     	<TextView
         	android:id="@+id/app_description"
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
         	android:layout_below="@id/help_text"
         	android:text="@string/app_description" />
-     
     	<TextView
         	android:id="@+id/how_create"
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
         	android:layout_below="@id/app_description"
         	android:text="@string/how_create" />
-       
     	<TextView
         	android:id="@+id/how_edit"
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
         	android:layout_below="@id/how_create"  
         	android:text="@string/how_edit" />
-	       
     	<TextView
         	android:id="@+id/how_delete"
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
         	android:layout_below="@id/how_edit"
         	android:text="@string/how_delete" />
-       
     	<TextView
         	android:id="@+id/help"
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
         	android:layout_below="@id/how_delete"
-        	android:text="@string/help" />        
-    
+        	android:text="@string/help" />
 	</RelativeLayout>
-	
 </ScrollView>
