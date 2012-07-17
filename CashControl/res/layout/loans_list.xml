@@ -2,13 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/main_header_selector" >  
+    android:background="@drawable/background" >  
     
     <TextView 
   	     android:id="@+id/nameColum"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:text="Name"/>
+         android:text="@string/name_colum"/>
     
     <TextView
   	     android:id="@+id/amountColum"
@@ -16,21 +16,51 @@
   	     android:layout_height="wrap_content"
   	     android:layout_alignParentRight="true"
   	     android:layout_alignParentTop="true"
-  	     android:text="Amount" />
+  	     android:text="@string/amount_colum" />
+    
+     <View
+        android:id="@+id/listDivider1"
+		android:layout_width="fill_parent"
+		android:layout_height="5sp"
+		android:layout_marginTop="5dip"
+		android:layout_below="@id/nameColum"
+		android:background="#FF909090" />
+   
     
      <ListView 
          android:id="@+id/android:list"
-         android:layout_below="@id/nameColum"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         />
+         android:layout_below="@id/nameColum"
+         android:layout_marginTop="10dip" />
     
   	 <TextView 
   	     android:id="@+id/android:empty"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:text="@string/no_loans"/>
-
   	 
+  	 <View
+  	    android:id="@+id/listDivider2"
+		android:layout_width="fill_parent"
+		android:layout_height="5sp"
+		android:layout_marginTop="5dip"
+		android:layout_below="@id/android:list"
+		android:background="#FF909090" />
+  	 
+  	 <TextView 
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@id/listDivider2"
+         android:layout_marginTop="10dip"
+         android:text="@string/total_amount" />
+  	 
+  	 <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/listDivider2"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dip"
+        android:text="" />
    
 </RelativeLayout>

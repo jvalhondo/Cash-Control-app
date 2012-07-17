@@ -7,6 +7,10 @@
     <string name="table_contact">Contact</string>
     <string name="table_amount">Amount</string>
     
+    <string name="name_colum">Name:</string>
+    <string name="amount_colum">Amount(€):</string>
+    <string name="total_amount">Total Amount(€):</string>
+    
     <string name="menu_insert">Add Loan</string>
     <string name="menu_edit">Edit Loan</string>
     <string name="menu_help">Help</string>

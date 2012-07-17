@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/scrollView1"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="5dp" >
-
-<RelativeLayout
+    android:id="@+id/scrollView1"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:gravity="center" >
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:layout_gravity="fill_vertical"
+    android:layout_marginRight="5dp" >
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="436dp"
+    android:layout_gravity="fill_vertical"
+    android:background="@drawable/background" >
 
     <TextView
         android:id="@+id/personText"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:layout_marginBottom="5dip"
         android:layout_marginTop="20dip"
         android:text="@string/person" />
@@ -83,8 +84,8 @@
         android:id="@+id/pickDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/dateDisplay"
-        android:layout_alignBottom="@+id/dateDisplay"
+        android:layout_alignBaseline="@id/dateDisplay"
+        android:layout_alignBottom="@id/dateDisplay"
         android:layout_alignParentRight="true"
         android:text="@string/dateSet" />
 
@@ -101,8 +102,8 @@
         android:id="@+id/pickTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/timeDisplay"
-        android:layout_alignBottom="@+id/timeDisplay"
+        android:layout_alignBaseline="@id/timeDisplay"
+        android:layout_alignBottom="@id/timeDisplay"
         android:layout_alignParentRight="true"
         android:text="@string/timeSet" />
 
@@ -110,9 +111,10 @@
         android:id="@+id/confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/pickTime"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="40dip"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_marginBottom="38dp"
         android:text="@string/confirm" />
 
 </RelativeLayout>
