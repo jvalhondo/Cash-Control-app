@@ -6,19 +6,20 @@
     android:stretchColumns="1">
         
     <TableRow>
-		<TextView android:id="@+id/text1" 
-				  android:layout_column="1"
-                  android:padding="3dip"
-                  />
+		<TextView 
+		    android:id="@+id/text1" 
+			android:layout_column="1"
+            android:padding="3dip" />
     
-		<TextView android:id="@+id/text2" 
-                   android:gravity="right"
-                   android:padding="3dip"
-                   />
+		<TextView 
+		    android:id="@+id/text2" 
+            android:layout_column="2"
+            android:padding="3dip" />
 		
 		    
     <View
-        android:layout_height="2dip"
+        android:layout_width="fill_parent"
+        android:layout_height="3dip"
         android:background="#FF909090" />
     			   
     </TableRow>
