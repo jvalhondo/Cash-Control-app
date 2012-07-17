@@ -8,19 +8,27 @@
     <TableRow>
 		<TextView 
 		    android:id="@+id/text1" 
+		    style="@style/ItemFont"
 			android:layout_column="1"
+			android:layout_marginTop="5dip"
+			android:layout_marginBottom="5dip"
+			android:layout_marginLeft="5dip"
             android:padding="3dip" />
     
 		<TextView 
-		    android:id="@+id/text2" 
+		    android:id="@+id/text2"
+		    style="@style/ItemFont"
             android:layout_column="2"
+            android:layout_marginTop="5dip"
+			android:layout_marginBottom="5dip"
+			android:layout_marginRight="5dip"
             android:padding="3dip" />
 		
 		    
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="3dip"
-        android:background="#FF909090" />
+    	<View
+        	android:layout_width="fill_parent"
+       		android:layout_height="10dip"
+        	android:background="@drawable/list_divider_background" />
     			   
     </TableRow>
     
