@@ -36,11 +36,11 @@ public class CashControl extends ListActivity {
         
         fillData();
         
-        int columnIndex = 3; // Whichever column your float is in.
+        // for getting total amount parameter
+        int columnIndex = 3; // Amount Column --> 3
         Cursor cursor = mDbHelper.fetchAllNotes();
         float[] amountColum = new float[cursor.getCount()];
         float totalAmount = 0;
-
         if (cursor.moveToFirst()){                       
             for (int i = 0; i < cursor.getCount(); i++){
                 amountColum[i] = cursor.getFloat(columnIndex);
