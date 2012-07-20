@@ -23,6 +23,7 @@ public class CashControl extends ListActivity {
     private static final int ACTIVITY_EDIT = 1;
     		
     private LoansDbAdapter mDbHelper;
+    private TextView mTotalAmount;
 
     /** Called when the activity is first created. */
     @Override
@@ -34,6 +35,22 @@ public class CashControl extends ListActivity {
         mDbHelper.open();
         
         fillData();
+        
+        int columnIndex = 3; // Whichever column your float is in.
+        Cursor cursor = mDbHelper.fetchAllNotes();
+        float[] amountColum = new float[cursor.getCount()];
+        float totalAmount = 0;
+
+        if (cursor.moveToFirst()){                       
+            for (int i = 0; i < cursor.getCount(); i++){
+                amountColum[i] = cursor.getFloat(columnIndex);
+                totalAmount = totalAmount + amountColum[i];
+                cursor.moveToNext();
+            }           
+        }
+        cursor.close();
+        mTotalAmount = (TextView) findViewById(R.id.totalAmount);
+        mTotalAmount.setText(Float.toString(totalAmount));
         
         registerForContextMenu(getListView());
 
