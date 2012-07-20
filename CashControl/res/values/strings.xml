@@ -38,23 +38,29 @@
     <string name="about_title">About</string>
     <string name="edit_loan_title">Edit Loan</string>
     
-    <string name="app_about"> About Application </string>
-    <string name="app_version"> v 2.0 </string>
-    <string name="app_date"> 25/05/2012</string>
-    <string name="app_system"> Android 2.3.3</string>
-    <string name="about_text"> Developerers:</string>
-    <string name="author1"> Jorge Valhondo Rama</string>
-    <string name="author2"> Eva Suarez Alba</string>    
-        
-    <string name="help_text">Help Text</string>
-    <string name="app_description">A new way to control your cash from your android smart phone.</string>
-    <string name="how_create">1. If you want to create a new entry, you only have to access to the main menu and click on "Add Loan".
-             Then you can write name, date, hour, description and amount, all the items you need to control the cash you borrow.</string>
-    <string name="how_edit">2.To edit a loan, you have to click on the name of the proper person,so now you have a new view, where you can change the 
-        different field of your loan.</string>
-    <string name="how_delete">3. To delete a loan, you have to click on the loan and select "Delete Loan"</string>
-    <string name="help">4. Moreover in the main menu, you have two other options: "About"and"Help". About gives you a piece of information about the developers,
-          the version or the system, and Help show you this page.</string>
+    <!-- =============================================================== -->
+	<!-- About Activity Strings -->
+	<!-- =============================================================== -->
+	<string name="version_element">Version:</string>
+	<string name="version_value">1.0</string>
+    <string name="date_element">Date:</string>
+    <string name="date_value">20/07/2012</string>
+    <string name="system_element">Android 2.3.3</string>
+    <string name="developer_element">Developer:</string>
+    <string name="developer_value">Jorge Valhondo Rama</string>
+    
+    <!-- =============================================================== -->
+	<!-- Help Activity Strings -->
+	<!-- =============================================================== -->
+    <string name="help_description">Cash Control app is an easy different way to control cash that you have lent from your android smart phone.</string>
+    <string name="adding_loan">Adding a loan:</string>
+    <string name="how_to_add">For adding new loan to your list, go to the main menu and click on "Add Loan". Then fill fields like name, description, amount and set an alarm to remember it.</string>
+    <string name="editing_loan">Editing a loan:</string>
+    <string name="how_to_edit">For editing a loan, click on the item of the list you want to edit, modify fields and click on the confirm button.</string>
+    <string name="deleting_loan">Deleting a loan:</string>
+    <string name="how_to_delete">For deleting a loan, long click on the loan form the list you want to delete and click confirm button.</string>
+    <string name="other_options">Other options:</string>
+    <string name="other_options_text">"About" and "Help" options from the main menu can give you more information about Cash Control app.</string>
     
     
 </resources>

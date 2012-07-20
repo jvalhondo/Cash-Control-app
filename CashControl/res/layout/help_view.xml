@@ -1,50 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/scrollView2"
+	android:id="@+id/scrollViewHelp"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/background"
     android:layout_alignParentRight="true"
     android:layout_alignParentTop="true"
     android:layout_marginRight="1dp" >    
- 	<RelativeLayout 
-    	android:layout_width="fill_parent"
-    	android:layout_height="wrap_content" >
-    	<TextView
-        	android:id="@+id/help_text"
-        	android:layout_width="fill_parent"
-        	android:layout_height="wrap_content"
-        	android:layout_marginTop="20dip"
-        	android:text="@string/help_text" />
-    	<TextView
-        	android:id="@+id/app_description"
-        	android:layout_width="fill_parent"
-        	android:layout_height="wrap_content"
-        	android:layout_below="@id/help_text"
-        	android:text="@string/app_description" />
-    	<TextView
-        	android:id="@+id/how_create"
-        	android:layout_width="fill_parent"
-        	android:layout_height="wrap_content"
-        	android:layout_below="@id/app_description"
-        	android:text="@string/how_create" />
-    	<TextView
-        	android:id="@+id/how_edit"
-        	android:layout_width="fill_parent"
-        	android:layout_height="wrap_content"
-        	android:layout_below="@id/how_create"  
-        	android:text="@string/how_edit" />
-    	<TextView
-        	android:id="@+id/how_delete"
-        	android:layout_width="fill_parent"
-        	android:layout_height="wrap_content"
-        	android:layout_below="@id/how_edit"
-        	android:text="@string/how_delete" />
-    	<TextView
-        	android:id="@+id/help"
-        	android:layout_width="fill_parent"
-        	android:layout_height="wrap_content"
-        	android:layout_below="@id/how_delete"
-        	android:text="@string/help" />
-	</RelativeLayout>
+
+ 	<RelativeLayout
+ 	    android:layout_width="fill_parent"
+ 	    android:layout_height="wrap_content" >
+ 	    <ImageView
+ 	        android:id="@+id/deleteLoanIcon"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_above="@+id/how_to_delete"
+ 	        android:layout_alignParentLeft="true"
+ 	        android:src="@drawable/deleteloan_icon" />
+
+ 	    <ImageView
+ 	        android:id="@+id/editLoanIcon"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_alignParentLeft="true"
+ 	        android:layout_alignTop="@+id/editing_loan"
+ 	        android:src="@drawable/editloan_icon" />
+
+ 	    <ImageView
+ 	        android:id="@+id/addLoanIcon"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_alignParentLeft="true"
+ 	        android:layout_below="@+id/help_description"
+ 	        android:src="@drawable/addloan_icon" />
+
+ 	    <TextView
+ 	        android:id="@+id/help_description"
+ 	        style="@style/boldFontHelpDescription"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_marginLeft="5dp"
+ 	        android:layout_marginTop="10dp"
+ 	        android:text="@string/help_description" />
+
+ 	    <TextView
+ 	        android:id="@+id/adding_loan"
+ 	        style="@style/boldFont"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_below="@id/help_description"
+ 	        android:layout_toRightOf="@id/addLoanIcon"
+ 	        android:layout_marginLeft="5dp"
+ 	        android:layout_marginTop="10dp"
+ 	        android:text="@string/adding_loan" />
+
+ 	    <TextView
+ 	        android:id="@+id/how_to_add"
+ 	        style="@style/itemFont"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_below="@id/adding_loan"
+ 	        android:layout_marginLeft="10dp"
+ 	        android:layout_marginTop="5dp"
+ 	        android:text="@string/how_to_add" />
+
+ 	    <TextView
+ 	        android:id="@+id/editing_loan"
+ 	        style="@style/boldFont"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_below="@id/how_to_add"
+ 	        android:layout_toRightOf="@id/editLoanIcon"
+ 	        android:layout_marginLeft="5dp"
+ 	        android:layout_marginTop="10dp"
+ 	        android:text="@string/editing_loan" />
+
+ 	    <TextView
+ 	        android:id="@+id/how_to_edit"
+ 	        style="@style/itemFont"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_below="@id/editing_loan"
+ 	        android:layout_marginLeft="10dp"
+ 	        android:layout_marginTop="5dp"
+ 	        android:text="@string/how_to_edit" />
+
+ 	    <TextView
+ 	        android:id="@+id/deleting_loan"
+ 	        style="@style/boldFont"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_below="@id/how_to_edit"
+ 	        android:layout_toRightOf="@id/deleteLoanIcon"
+ 	        android:layout_marginLeft="5dp"
+ 	        android:layout_marginTop="10dp"
+ 	        android:text="@string/deleting_loan" />
+
+ 	    <TextView
+ 	        android:id="@+id/how_to_delete"
+ 	        style="@style/itemFont"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_below="@id/deleting_loan"
+ 	        android:layout_marginLeft="10dp"
+ 	        android:layout_marginTop="5dp"
+ 	        android:text="@string/how_to_delete" />
+
+ 	    <TextView
+ 	        android:id="@+id/other_options"
+ 	        style="@style/boldFont"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_below="@id/how_to_delete"
+ 	        android:layout_marginLeft="5dp"
+ 	        android:layout_marginTop="10dp"
+ 	        android:text="@string/other_options" />
+
+ 	    <TextView
+ 	        android:id="@+id/other_options_text"
+ 	        style="@style/itemFont"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_below="@id/other_options"
+ 	        android:layout_marginBottom="10dp"
+ 	        android:layout_marginLeft="10dp"
+ 	        android:layout_marginTop="5dp"
+ 	        android:text="@string/other_options_text" />
+ 	</RelativeLayout>
+
 </ScrollView>
