@@ -66,5 +66,6 @@
          android:layout_below="@id/listDivider2"
          android:layout_alignParentRight="true"
          android:layout_marginTop="10dip"
+         android:layout_marginLeft="5dip"
          android:text="" />
 </RelativeLayout>
