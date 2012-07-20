@@ -16,12 +16,13 @@ import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
 public class CashControl extends ListActivity {
     private static final int ACTIVITY_CREATE = 0;
     private static final int ACTIVITY_EDIT = 1;
     		
-    private LoansDbAdapter mDbHelper; 
+    private LoansDbAdapter mDbHelper;
 
     /** Called when the activity is first created. */
     @Override
@@ -45,7 +46,7 @@ public class CashControl extends ListActivity {
 
         // Create an array to specify the fields we want to display in the list (only PERSON)
         String[] from = new String[]{LoansDbAdapter.KEY_PERSON, LoansDbAdapter.KEY_AMOUNT};
-
+        
         // and an array of the fields we want to bind those fields to (in this case just text1)
         int[] to = new int[]{R.id.text1, R.id.text2};
 
