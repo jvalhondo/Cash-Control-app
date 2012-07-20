@@ -40,7 +40,7 @@ public class LoanEdit extends Activity {
     private int mDay;
     static final int DATE_DIALOG_ID = 0;
     
-    // for the date button"Set Date"
+    // for the date button"Set Time"
     private TextView mTimeDisplay;
     private Button mPickTime;
     private int mHour;

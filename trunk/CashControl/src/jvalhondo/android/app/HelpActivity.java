@@ -11,5 +11,4 @@ public class HelpActivity extends Activity {
         setContentView(R.layout.help_view);
         setTitle(R.string.help_title);
     }
-
 }
