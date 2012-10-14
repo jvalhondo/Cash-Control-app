@@ -1,0 +1,122 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:layout_gravity="fill_vertical"
+    android:layout_marginRight="1dp" >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="430dp"
+    android:layout_gravity="fill_vertical"
+    android:background="@drawable/background" >
+    <TextView
+        android:id="@+id/personText"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        style="@style/boldFont"
+        android:layout_marginBottom="5dip"
+        android:layout_marginTop="15dip"
+        android:layout_marginLeft="5dip"
+        android:text="@string/person" />
+    <EditText
+        android:id="@+id/person"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="@style/itemFont"
+        android:layout_below="@id/personText"
+        android:layout_marginBottom="10dip"
+        android:background="@android:drawable/editbox_background"
+        android:ems="10"
+        android:inputType="textPersonName" />
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="@style/boldFont"
+        android:layout_below="@id/person"
+        android:layout_marginBottom="5dip"
+        android:layout_marginLeft="5dip"
+        android:text="@string/description" />
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="@style/itemFont"
+        android:layout_below="@id/descriptionText"
+        android:layout_marginBottom="10dip"
+        android:background="@android:drawable/editbox_background"
+        android:inputType="none"
+        android:scrollbars="vertical" />
+    <TextView
+        android:id="@+id/amountText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="@style/boldFont"
+        android:layout_below="@id/description"
+        android:layout_marginBottom="5dip"
+        android:layout_marginLeft="5dip"
+        android:text="@string/amount" />
+    <EditText
+        android:id="@+id/amount"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="@style/itemFont"
+        android:layout_below="@id/amountText"
+        android:layout_marginBottom="10dip"
+        android:background="@android:drawable/editbox_background"
+        android:ems="10"
+        android:inputType="numberDecimal" >
+        <requestFocus />
+    </EditText>
+    <TextView
+        android:id="@+id/dateDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/itemFont"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/amount"
+        android:layout_marginTop="10dip"
+        android:layout_marginLeft="5dip"
+        android:text="" />
+    <Button
+        android:id="@+id/pickDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/buttonStyle"
+        android:layout_alignBaseline="@id/dateDisplay"
+        android:layout_alignBottom="@id/dateDisplay"
+        android:layout_alignParentRight="true"
+        android:text="@string/dateSet" />
+    <TextView
+        android:id="@+id/timeDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/itemFont"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/dateDisplay"
+        android:layout_marginTop="40dip"
+        android:layout_marginLeft="5dip"
+        android:text="" />
+    <Button
+        android:id="@+id/pickTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/buttonStyle"
+        android:layout_alignBaseline="@id/timeDisplay"
+        android:layout_alignBottom="@id/timeDisplay"
+        android:layout_alignParentRight="true"
+        android:text="@string/timeSet" />
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/buttonStyle"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_marginBottom="38dp"
+        android:text="@string/confirm" />
+</RelativeLayout>
+</ScrollView>

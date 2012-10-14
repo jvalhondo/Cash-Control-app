@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">Cash Control</string>
+    <string name="no_loans">No Loans Yet</string>
+    
+    <string name="table_contact">Contact</string>
+    <string name="table_amount">Amount</string>
+    
+    <string name="name_colum">Name:</string>
+    <string name="amount_colum">Amount(€):</string>
+    <string name="total_amount">Total Amount(€):</string>
+    
+    <string name="menu_insert">Add Loan</string>
+    <string name="menu_edit">Edit Loan</string>
+    <string name="menu_help">Help</string>
+    <string name="menu_about">About</string>
+    <string name="menu_delete">Delete Loan</string>
+    <string name="context_menu_title">Choose an action:</string>
+    <string name="delete_confirm_question">Are you sure you want to delete this item?</string>
+    <string name="alert_dialog_cancel">Cancel</string>
+    <string name="alert_dialog_confirm">Confirm</string>
+    
+    <string name="one_shot_received">One shot received</string>
+    <string name="alarm_controller">Alarm Controller</string>
+    <string name="one_shot_alarm">One shot Alarm</string>
+    <string name="one_shot_scheduled">One shot Scheduled</string>
+
+    
+    <string name="person">Person</string>
+    <string name="description">Description</string>
+    <string name="amount">Amount (€)</string>
+    <string name="dateSet">Set Alarm Date</string>
+    <string name="timeSet">Set Alarm Time</string>
+    <string name="confirm">Confirm</string>
+    
+    <string name="help_title">Help</string>
+    <string name="about_title">About</string>
+    <string name="edit_loan_title">Edit Loan</string>
+    
+    <!-- =============================================================== -->
+	<!-- About Activity Strings -->
+	<!-- =============================================================== -->
+	<string name="version_element">Version:</string>
+	<string name="version_value">1.0</string>
+    <string name="date_element">Date:</string>
+    <string name="date_value">20/07/2012</string>
+    <string name="system_element">Android 2.3.3</string>
+    <string name="developer_element">Developer:</string>
+    <string name="developer_value">Jorge Valhondo Rama</string>
+    
+    <!-- =============================================================== -->
+	<!-- Help Activity Strings -->
+	<!-- =============================================================== -->
+    <string name="imageContentDescription">Image Content Description</string>
+    <string name="help_description">Cash Control app is an easy different way to control cash that you have lent from your android smart phone.</string>
+    <string name="adding_loan">Adding a loan:</string>
+    <string name="how_to_add">For adding new loan to your list, go to the main menu and click on "Add Loan". Then fill fields like name, description, amount and set an alarm to remember it.</string>
+    <string name="editing_loan">Editing a loan:</string>
+    <string name="how_to_edit">For editing a loan, click on the item of the list you want to edit, modify fields and click on the confirm button.</string>
+    <string name="deleting_loan">Deleting a loan:</string>
+    <string name="how_to_delete">For deleting a loan, long click on the loan form the list you want to delete and click confirm button.</string>
+    <string name="other_options">Other options:</string>
+    <string name="other_options_text">"About" and "Help" options from the main menu can give you more information about Cash Control app.</string>
+    
+    
+</resources>

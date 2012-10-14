@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/scrollViewHelp"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginRight="1dp" >
+ 	<RelativeLayout
+ 	    android:layout_width="fill_parent"
+ 	    android:layout_height="wrap_content" >
+ 	    <ImageView
+ 	        android:id="@+id/addLoanIcon"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_alignParentLeft="true"
+ 	        android:layout_below="@+id/help_description"
+ 	        android:layout_marginTop="10dp"
+ 	        android:contentDescription="@string/imageContentDescription"
+ 	        android:src="@drawable/addloan_black_icon" />
+ 	    <ImageView
+ 	        android:id="@+id/editLoanIcon"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_alignParentLeft="true"
+ 	        android:layout_below="@+id/how_to_add"
+ 	        android:layout_marginTop="10dp"
+ 	        android:contentDescription="@string/imageContentDescription"
+ 	        android:src="@drawable/editloan_icon" />
+ 	    <ImageView
+ 	        android:id="@+id/deleteLoanIcon"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_alignParentLeft="true"
+ 	        android:layout_below="@+id/how_to_edit"
+ 	        android:layout_marginTop="10dp"
+ 	        android:contentDescription="@string/imageContentDescription"
+ 	        android:src="@drawable/deleteloan_icon" />
+ 	    <TextView
+ 	        android:id="@+id/help_description"
+ 	        style="@style/boldFontHelpDescription"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_marginLeft="5dp"
+ 	        android:layout_marginTop="10dp"
+ 	        android:text="@string/help_description" />
+ 	    <TextView
+ 	        android:id="@+id/adding_loan"
+ 	        style="@style/boldFont"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_below="@id/help_description"
+ 	        android:layout_marginLeft="5dp"
+ 	        android:layout_marginTop="10dp"
+ 	        android:layout_toRightOf="@id/addLoanIcon"
+ 	        android:text="@string/adding_loan" />
+ 	    <TextView
+ 	        android:id="@+id/how_to_add"
+ 	        style="@style/itemFont"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_below="@id/adding_loan"
+ 	        android:layout_marginLeft="10dp"
+ 	        android:layout_marginTop="5dp"
+ 	        android:text="@string/how_to_add" />
+ 	    <TextView
+ 	        android:id="@+id/editing_loan"
+ 	        style="@style/boldFont"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_below="@id/how_to_add"
+ 	        android:layout_marginLeft="5dp"
+ 	        android:layout_marginTop="10dp"
+ 	        android:layout_toRightOf="@id/editLoanIcon"
+ 	        android:text="@string/editing_loan" />
+ 	    <TextView
+ 	        android:id="@+id/how_to_edit"
+ 	        style="@style/itemFont"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_below="@id/editing_loan"
+ 	        android:layout_marginLeft="10dp"
+ 	        android:layout_marginTop="5dp"
+ 	        android:text="@string/how_to_edit" />
+ 	    <TextView
+ 	        android:id="@+id/deleting_loan"
+ 	        style="@style/boldFont"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_below="@id/how_to_edit"
+ 	        android:layout_marginLeft="5dp"
+ 	        android:layout_marginTop="10dp"
+ 	        android:layout_toRightOf="@id/deleteLoanIcon"
+ 	        android:text="@string/deleting_loan" />
+ 	    <TextView
+ 	        android:id="@+id/how_to_delete"
+ 	        style="@style/itemFont"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_below="@id/deleting_loan"
+ 	        android:layout_marginLeft="10dp"
+ 	        android:layout_marginTop="5dp"
+ 	        android:text="@string/how_to_delete" />
+ 	    <TextView
+ 	        android:id="@+id/other_options"
+ 	        style="@style/boldFont"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_below="@+id/how_to_delete"
+ 	        android:layout_marginTop="16dp"
+ 	        android:layout_toRightOf="@+id/deleteLoanIcon"
+ 	        android:text="@string/other_options" />
+ 	    <TextView
+ 	        android:id="@+id/other_options_text"
+ 	        style="@style/itemFont"
+ 	        android:layout_width="wrap_content"
+ 	        android:layout_height="wrap_content"
+ 	        android:layout_below="@id/other_options"
+ 	        android:layout_marginLeft="10dp"
+ 	        android:layout_marginTop="5dp"
+ 	        android:layout_marginBottom="10dp"
+ 	        android:text="@string/other_options_text" />
+ 	</RelativeLayout>
+</ScrollView>
