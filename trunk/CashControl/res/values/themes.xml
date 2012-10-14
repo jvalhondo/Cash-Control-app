@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-	<style name="CashControlTheme" parent="android:Theme.Light">
-    	<item name="android:windowBackground">@color/bright_purple</item>
-    	<item name="android:colorBackground">@color/bright_purple</item>
-	</style>
-
-</resources>
