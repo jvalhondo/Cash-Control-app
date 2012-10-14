@@ -41,6 +41,8 @@
   	     style="@style/itemFont"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
+         android:layout_below="@id/nameColum"
+         android:layout_marginTop="10dip"
          android:text="@string/no_loans"/>
   	 <View
   	    android:id="@+id/listDivider2"
