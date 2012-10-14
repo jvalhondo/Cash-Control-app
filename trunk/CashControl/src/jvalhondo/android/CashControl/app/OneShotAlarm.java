@@ -1,6 +1,6 @@
-package jvalhondo.android.app;
+package jvalhondo.android.CashControl.app;
 
-import jvalhondo.android.app.R;
+import jvalhondo.android.CashControl.app.R;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
