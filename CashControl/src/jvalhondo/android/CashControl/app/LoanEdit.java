@@ -1,8 +1,8 @@
-package jvalhondo.android.app;
+package jvalhondo.android.CashControl.app;
 
 import java.util.Calendar;
 
-import jvalhondo.android.app.R;
+import jvalhondo.android.CashControl.app.R;
 
 import android.app.Activity;
 import android.app.AlarmManager;
