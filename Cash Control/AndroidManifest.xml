@@ -19,7 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoanEdit" />
+        <activity android:name=".LoanEdit"
+            	  android:windowSoftInputMode="stateHidden"></activity>
         <activity android:name=".AboutActivity" />
         <activity android:name=".HelpActivity" />
         <receiver android:name=".OneShotAlarm" />
