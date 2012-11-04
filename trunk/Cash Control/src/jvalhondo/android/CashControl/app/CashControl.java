@@ -1,6 +1,5 @@
 package jvalhondo.android.CashControl.app;
 
-import jvalhondo.android.CashControl.app.R;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
@@ -18,12 +17,16 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
+import com.google.ads.AdView;
+
 public class CashControl extends ListActivity {
     private static final int ACTIVITY_CREATE = 0;
     private static final int ACTIVITY_EDIT = 1;
     		
     private LoansDbAdapter mDbHelper;
     private TextView mTotalAmount;
+    
+    private AdView adView;
 
     /** Called when the activity is first created. */
     @Override
@@ -166,5 +169,13 @@ public class CashControl extends ListActivity {
         fillData();
         // Updating the value total amount after editing a loan
         mTotalAmount.setText(Float.toString(totalAmount()));
+    }
+    
+    @Override
+    public void onDestroy() {
+      if (adView != null) {
+        adView.destroy();
+      }
+      super.onDestroy();
     }
 }
