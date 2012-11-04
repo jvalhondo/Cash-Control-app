@@ -133,14 +133,19 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int list_item_wh=0x7f020016;
         public static final int list_item_wh_pressed=0x7f020017;
         public static final int list_item_wh_selected=0x7f020018;
-        public static final int piggy_bank_24_24_32=0x7f020019;
-        public static final int piggy_bank_256_256_32=0x7f02001a;
-        public static final int piggy_bank_32x32_32=0x7f02001b;
-        public static final int piggy_bank_48_48_32=0x7f02001c;
-        public static final int piggy_bank_icon=0x7f02001d;
-        public static final int title_bar_wh=0x7f02001e;
-        public static final int white_container_bl=0x7f02001f;
-        public static final int white_container_wh=0x7f020020;
+        public static final int money_pig_dapino_webdesign_256_256=0x7f020019;
+        public static final int money_pig_dapino_webdesign_32_32=0x7f02001a;
+        public static final int money_pig_dapino_webdesign_48_48=0x7f02001b;
+        public static final int money_pig_dapino_webdesign_512_512=0x7f02001c;
+        public static final int money_pig_dapino_webdesign_64_64=0x7f02001d;
+        public static final int piggy_bank_24_24_32=0x7f02001e;
+        public static final int piggy_bank_256_256_32=0x7f02001f;
+        public static final int piggy_bank_32x32_32=0x7f020020;
+        public static final int piggy_bank_48_48_32=0x7f020021;
+        public static final int piggy_bank_icon=0x7f020022;
+        public static final int title_bar_wh=0x7f020023;
+        public static final int white_container_bl=0x7f020024;
+        public static final int white_container_wh=0x7f020025;
     }
     public static final class id {
         public static final int about=0x7f09002b;
