@@ -35,22 +35,9 @@ public class CashControl extends ListActivity {
         mDbHelper.open();
         
         fillData();
-        
-        // for getting total amount parameter
-        int columnIndex = 3; // Amount Column --> 3
-        Cursor cursor = mDbHelper.fetchAllNotes();
-        float[] amountColum = new float[cursor.getCount()];
-        float totalAmount = 0;
-        if (cursor.moveToFirst()){                       
-            for (int i = 0; i < cursor.getCount(); i++){
-                amountColum[i] = cursor.getFloat(columnIndex);
-                totalAmount = totalAmount + amountColum[i];
-                cursor.moveToNext();
-            }           
-        }
-        cursor.close();
+
         mTotalAmount = (TextView) findViewById(R.id.totalAmount);
-        mTotalAmount.setText(Float.toString(totalAmount));
+        mTotalAmount.setText(Float.toString(totalAmount()));
         
         registerForContextMenu(getListView());
 
@@ -71,6 +58,24 @@ public class CashControl extends ListActivity {
         SimpleCursorAdapter loans = 
             new SimpleCursorAdapter(this, R.layout.loans_row, loansCursor, from, to);
         setListAdapter(loans);
+    }
+    
+   
+    public float totalAmount() {
+    	// for getting total amount parameter
+        int columnIndex = 3; // Amount Column --> 3
+        Cursor cursorAmount = mDbHelper.fetchAllNotes();
+        float[] amountColum = new float[cursorAmount.getCount()];
+        float totalAmount = 0;
+        if (cursorAmount.moveToFirst()){                       
+            for (int i = 0; i < cursorAmount.getCount(); i++){
+                amountColum[i] = cursorAmount.getFloat(columnIndex);
+                totalAmount = totalAmount + amountColum[i];
+                cursorAmount.moveToNext();
+            }           
+        }
+        cursorAmount.close();
+    	return totalAmount;
     }
 
     // generate the bottom main menu
@@ -159,5 +164,7 @@ public class CashControl extends ListActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
         fillData();
+        // Updating the value total amount after editing a loan
+        mTotalAmount.setText(Float.toString(totalAmount()));
     }
 }
