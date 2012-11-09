@@ -155,7 +155,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int amountColum=0x7f090021;
         public static final int amountText=0x7f090018;
         public static final int confirm=0x7f09001e;
-        public static final int dateDisplay=0x7f09001a;
+        public static final int dateDisplay=0x7f09001b;
         public static final int date_element=0x7f090002;
         public static final int date_value=0x7f090003;
         public static final int delete=0x7f09002b;
@@ -183,13 +183,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int other_options_text=0x7f090013;
         public static final int person=0x7f090015;
         public static final int personText=0x7f090014;
-        public static final int pickDate=0x7f09001b;
-        public static final int pickTime=0x7f09001d;
+        public static final int pickDate=0x7f09001a;
+        public static final int pickTime=0x7f09001c;
         public static final int scrollViewHelp=0x7f090007;
         public static final int system_element=0x7f090004;
         public static final int text1=0x7f090028;
         public static final int text2=0x7f090029;
-        public static final int timeDisplay=0x7f09001c;
+        public static final int timeDisplay=0x7f09001d;
         public static final int totalAmount=0x7f090025;
         public static final int version_element=0x7f090000;
         public static final int version_value=0x7f090001;
