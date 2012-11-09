@@ -17,6 +17,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -28,34 +29,32 @@ public class LoanEdit extends Activity {
 	private EditText mPersonText;
 	private EditText mDescriptionText;
 	private EditText mAmountText;
-	
+	// DataBase params
 	private Long mRowId;
 	private LoansDbAdapter mDbHelper;
-	
-	// for the date button"Set Date"
+	// for the date Check Box
+	private CheckBox mAlarmCheckBox;
+	// for the date button "Set Date"
 	private TextView mDateDisplay;
     private Button mPickDate;
     private int mYear;
     private int mMonth;
     private int mDay;
     static final int DATE_DIALOG_ID = 0;
-    
-    // for the date button"Set Time"
+    // for the date button "Set Time"
     private TextView mTimeDisplay;
     private Button mPickTime;
     private int mHour;
     private int mMinute;
     static final int TIME_DIALOG_ID = 1;
-    
-    private Calendar rightNow = Calendar.getInstance();
-	private int yearRightNow = rightNow.get(Calendar.YEAR);
-	// Month is 0 based so add 1
-	private int monthRightNow = rightNow.get(Calendar.MONTH) + 1;
-	private int dayRightNow = rightNow.get(Calendar.DAY_OF_MONTH);
-	private int hourRightNow = rightNow.get(Calendar.HOUR_OF_DAY);
-	private int minuteRightNow = rightNow.get(Calendar.MINUTE);
+    // for the correctAlarmSet() method
+    private Calendar rightNow;
+	private int yearRightNow;
+	private int monthRightNow;
+	private int dayRightNow;
+	private int hourRightNow;
+	private int minuteRightNow;
 
-    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -70,7 +69,6 @@ public class LoanEdit extends Activity {
 		mPersonText = (EditText) findViewById(R.id.person);
 		mDescriptionText = (EditText) findViewById(R.id.description);
 		mAmountText = (EditText) findViewById(R.id.amount);
-		
 		
 		// capture our View elements Set Date
         mDateDisplay = (TextView) findViewById(R.id.dateDisplay);
@@ -106,10 +104,24 @@ public class LoanEdit extends Activity {
         mMinute = timeCalendar.get(Calendar.MINUTE);
         // display the current date
         updateTimeDisplay();
-        
-		
-		Button confirmButton = (Button) findViewById(R.id.confirm);
-		
+        // capture our View element Check Box and add a Listener
+        mAlarmCheckBox = (CheckBox) findViewById(R.id.alarmCheckBox);
+		mAlarmCheckBox.setOnClickListener(new View.OnClickListener() {
+
+			  public void onClick(View view) {
+				  	// Is alarmCheckBox checked?
+					if (mAlarmCheckBox.isChecked()) {
+						mPickDate.setEnabled(true);
+						mPickTime.setEnabled(true);
+						updateDateDisplay();
+						updateTimeDisplay();
+					}
+					else {
+						mPickDate.setEnabled(false);
+						mPickTime.setEnabled(false);
+					}
+			  }
+		});
 		
 		mRowId = (savedInstanceState == null) ? null :
             (Long) savedInstanceState.getSerializable(LoansDbAdapter.KEY_ROWID);
@@ -120,15 +132,15 @@ public class LoanEdit extends Activity {
         }
         
         populateFields();
-        
+        // capture our View element Confirm Button and add a Listener
+        Button confirmButton = (Button) findViewById(R.id.confirm);
 		confirmButton.setOnClickListener(new View.OnClickListener() {
 			
 		    public void onClick(View view) {
 	    		
 		    	if( someFieldsEmpty() == true ){
-		    		Toast.makeText(getBaseContext(), "Loan not saved!",Toast.LENGTH_SHORT).show();
-		    		
-		    	} else if( correctAlarmSet() == false ) { 
+		    		Toast.makeText(getBaseContext(), "Loan not saved! Some fields are empty.",Toast.LENGTH_SHORT).show();
+		    	} else if(mAlarmCheckBox.isChecked() == true & correctAlarmSet() == false ) { 
 		    		// Month is 0 based so add 1
 		    		int mMonthError = mMonth + 1;
 		    		// adding a 0 if minutes or hours are between 0 or 9 included
@@ -137,23 +149,31 @@ public class LoanEdit extends Activity {
 		    		String hourRightNowError = pad(hourRightNow);
 		    		String minuteRightNowError = pad(minuteRightNow);
 		    		
-		    		showErrorMessage("Error: Alarm set not right", "Alarm set: " + mMonthError	+ "-" + mDay
+		    		showErrorMessage("Error: Alarm set not right", "Alarm set: " + mDay	+ "-" + mMonthError
 		    				+ "-" + mYear + " at " + mHourError + ":" + mMinuteError
-		    				+ " and today is: " + monthRightNow	+ "-" +dayRightNow + "-"
-		    				+ yearRightNow + " at " + hourRightNowError + ":" + minuteRightNowError );
-		    			
+		    				+ " and today is: " + dayRightNow	+ "-" + monthRightNow + "-"
+		    				+ yearRightNow + " at " + hourRightNowError + ":" + minuteRightNowError );	
 		    	} else{
 		    		setResult(RESULT_OK);
 		    		Toast.makeText(getBaseContext(), "Loan saved!",Toast.LENGTH_SHORT).show();
 		    		finish();
-		    		upDateNotifications();
+		    		if (mAlarmCheckBox.isChecked()) upDateNotifications();
 		    	}
 		    }    
 		});
 	} // close onCreate method
-	
+
 	// check the alarm is set right
 	private boolean correctAlarmSet() {
+		// Get the Date and Time right now
+		rightNow = Calendar.getInstance();
+		yearRightNow = rightNow.get(Calendar.YEAR);
+		// Month is 0 based so add 1
+		monthRightNow = rightNow.get(Calendar.MONTH) + 1;
+		dayRightNow = rightNow.get(Calendar.DAY_OF_MONTH);
+		hourRightNow = rightNow.get(Calendar.HOUR_OF_DAY);
+		minuteRightNow = rightNow.get(Calendar.MINUTE);
+		// check if it's not a future date and time
 		if( mYear < yearRightNow) return false;
 		else if ( mMonth+1 < monthRightNow & mYear == yearRightNow ) return false;
 		else if ( mDay < dayRightNow & (mMonth+1 == monthRightNow & mYear == yearRightNow )) return false;
@@ -212,9 +232,9 @@ public class LoanEdit extends Activity {
 	private void updateDateDisplay() {
 		mDateDisplay.setText(
 	            new StringBuilder()
+	            		.append(mDay).append("-")
 	            		// Month is 0 based so add 1
 	                    .append(mMonth + 1).append("-")
-	                    .append(mDay).append("-")
 	                    .append(mYear).append(" "));
 	}
 	
@@ -306,7 +326,7 @@ public class LoanEdit extends Activity {
 	     
 	     if( someFieldsEmpty() == true ) {
 	    	 
-	    	 showErrorMessage("Error", "Some fileds were empty. Loan not saved");
+	    	 Toast.makeText(getBaseContext(), "Loan not saved! Some fileds were empty.",Toast.LENGTH_SHORT).show();
 	     }
 	     
 	     else {

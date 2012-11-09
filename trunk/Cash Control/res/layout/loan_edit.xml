@@ -89,6 +89,7 @@
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
 		        android:layout_gravity="left"
+		        android:enabled="false"
 		        style="@style/buttonStyle"
 		        android:text="@string/dateSet" />
 		    <TextView
@@ -110,6 +111,7 @@
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
 		        android:layout_gravity="left"
+		        android:enabled="false"
 		        style="@style/buttonStyle"
 		        android:text="@string/timeSet" />
 		    <TextView
@@ -123,13 +125,13 @@
 		        android:text="" />
 	    </LinearLayout>
 	    <Button
-	    android:id="@+id/confirm"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_gravity="right"
-		style="@style/buttonStyle"
-		android:paddingBottom="10dp"
-		android:layout_marginRight="5dp"
-		android:text="@string/confirm" />
+		    android:id="@+id/confirm"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="right"
+			style="@style/buttonStyle"
+			android:paddingBottom="10dp"
+			android:layout_marginRight="5dp"
+			android:text="@string/confirm" />
 	</LinearLayout>
 </ScrollView>
