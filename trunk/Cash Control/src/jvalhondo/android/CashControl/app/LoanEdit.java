@@ -126,8 +126,7 @@ public class LoanEdit extends Activity {
 		    public void onClick(View view) {
 	    		
 		    	if( someFieldsEmpty() == true ){
-		    		
-		    		showErrorMessage("Error", "Fields can't be empty");
+		    		Toast.makeText(getBaseContext(), "Loan not saved!",Toast.LENGTH_SHORT).show();
 		    		
 		    	} else if( correctAlarmSet() == false ) { 
 		    		// Month is 0 based so add 1
@@ -145,7 +144,7 @@ public class LoanEdit extends Activity {
 		    			
 		    	} else{
 		    		setResult(RESULT_OK);
-		    		Toast.makeText(getBaseContext(), "Loan saved",Toast.LENGTH_SHORT).show();
+		    		Toast.makeText(getBaseContext(), "Loan saved!",Toast.LENGTH_SHORT).show();
 		    		finish();
 		    		upDateNotifications();
 		    	}

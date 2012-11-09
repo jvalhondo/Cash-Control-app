@@ -146,6 +146,8 @@ public class CashControl extends ListActivity {
     				public void onClick(DialogInterface dialog, int which) {
     					mDbHelper.deleteLoan(id);
     					fillData();
+    					// Updating the value total amount after editing a loan
+    			        mTotalAmount.setText(Float.toString(totalAmount()));
     				}});
             	alertDialogDelete.show();			
     			return true;

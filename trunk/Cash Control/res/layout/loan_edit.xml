@@ -1,20 +1,12 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scrollView1"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentTop="true"
-    android:layout_gravity="fill_vertical"
-    android:layout_marginRight="1dp"
     android:background="@drawable/background" >
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="430dp"
-    android:layout_gravity="fill_vertical" >
     <TextView
         android:id="@+id/personText"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         style="@style/boldFont"
         android:layout_marginBottom="5dip"
         android:layout_marginTop="15dip"
@@ -74,7 +66,7 @@
         android:id="@+id/dateDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/itemFont"
+        style="@style/boldFont"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/amount"
         android:layout_marginTop="10dip"
@@ -93,7 +85,7 @@
         android:id="@+id/timeDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/itemFont"
+        style="@style/boldFont"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/dateDisplay"
         android:layout_marginTop="40dip"
@@ -108,15 +100,19 @@
         android:layout_alignBottom="@id/timeDisplay"
         android:layout_alignParentRight="true"
         android:text="@string/timeSet" />
-    <Button
-        android:id="@+id/confirm"
+    <RelativeLayout 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/buttonStyle"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignWithParentIfMissing="false"
-        android:layout_marginBottom="38dp"
-        android:text="@string/confirm" />
+	    android:layout_marginBottom="15dp" >
+	    <Button
+	        android:id="@+id/confirm"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        style="@style/buttonStyle"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignWithParentIfMissing="false"
+	        android:layout_marginRight="5dp"
+	        android:text="@string/confirm" />
+	    </RelativeLayout>
 </RelativeLayout>
-</ScrollView>
