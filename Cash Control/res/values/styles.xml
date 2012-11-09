@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+<!-- =============================================================== -->
+<!-- Generic Text Styles -->
+<!-- =============================================================== -->
+	<!-- Bold Text Font -->    
     <style name="boldFont" parent="@android:style/TextAppearance.Medium">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -8,6 +11,7 @@
         <item name="android:typeface">monospace</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <!-- Bold Help Text Font -->
     <style name="boldFontHelpDescription" parent="@android:style/TextAppearance.Small">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -15,25 +19,39 @@
         <item name="android:typeface">monospace</item>
         <item name="android:textStyle">bold</item>
     </style>
-    
+    <!-- List Item Text Font -->
     <style name="itemFont" parent="@android:style/TextAppearance.Small">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">#000000</item>
         <item name="android:typeface">sans</item>
     </style>
-    
+<!-- =============================================================== -->
+<!-- Generic Button Styles and Font -->
+<!-- =============================================================== -->
+	<!-- Button Font -->
     <style name="buttonFont" parent="@android:style/TextAppearance.Small">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">#000000</item>
         <item name="android:typeface">serif</item>
     </style>
-    
+    <!-- Button Style -->
     <style name="buttonStyle" parent="text_regular_wh">
 		<item name="android:background">@drawable/button_wh</item>
 		<item name="android:layout_margin">3sp</item>
 	</style>
+<!-- =============================================================== -->
+<!-- Generic List Divider Styles -->
+<!-- =============================================================== -->
+	<!-- Loans List Style -->
+	<style name="list_divider">
+		<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">1dip</item>
+		<item name="android:layout_marginTop">4dip</item>
+		<item name="android:layout_marginBottom">4dip</item>
+	</style>
+	
 	
     <style name="text_large_wh">
 		<item name="android:textColor">@color/text_wh_large</item>
@@ -46,17 +64,6 @@
     <style name="text_regular_wh">
 		<item name="android:textColor">@color/text_wh_regular</item>
 		<item name="android:textSize">15sp</item>
-	</style>
-	
-	<!-- =============================================================== -->
-	<!-- Generic Styles -->
-	<!-- =============================================================== -->
-
-	<style name="list_divider">
-		<item name="android:layout_width">fill_parent</item>
-		<item name="android:layout_height">1dip</item>
-		<item name="android:layout_marginTop">4dip</item>
-		<item name="android:layout_marginBottom">4dip</item>
 	</style>
 
 	<!-- =============================================================== -->

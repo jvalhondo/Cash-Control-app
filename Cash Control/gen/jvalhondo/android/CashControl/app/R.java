@@ -151,45 +151,45 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int addLoanIcon=0x7f090008;
         public static final int add_newloan=0x7f09002b;
         public static final int adding_loan=0x7f09000e;
-        public static final int amount=0x7f09001a;
-        public static final int amountColum=0x7f090022;
-        public static final int amountText=0x7f090019;
-        public static final int confirm=0x7f09001f;
-        public static final int dateDisplay=0x7f09001b;
+        public static final int amount=0x7f090019;
+        public static final int amountColum=0x7f090021;
+        public static final int amountText=0x7f090018;
+        public static final int confirm=0x7f09001e;
+        public static final int dateDisplay=0x7f09001a;
         public static final int date_element=0x7f090002;
         public static final int date_value=0x7f090003;
         public static final int delete=0x7f09002a;
         public static final int deleteLoanIcon=0x7f09000c;
         public static final int deleting_loan=0x7f090010;
-        public static final int description=0x7f090018;
-        public static final int descriptionText=0x7f090017;
+        public static final int description=0x7f090017;
+        public static final int descriptionText=0x7f090016;
         public static final int developer_element=0x7f090005;
         public static final int developer_value=0x7f090006;
         public static final int edit=0x7f090029;
         public static final int editLoanIcon=0x7f09000a;
         public static final int editing_loan=0x7f09000f;
+        public static final int firstRelativeLayout=0x7f09001f;
         public static final int help=0x7f09002c;
         public static final int help_description=0x7f090009;
         public static final int how_to_add=0x7f09000b;
         public static final int how_to_delete=0x7f090011;
         public static final int how_to_edit=0x7f09000d;
-        public static final int listDivider1=0x7f090023;
-        public static final int listDivider2=0x7f090024;
-        public static final int mainLayout=0x7f090020;
-        public static final int nameColum=0x7f090021;
+        public static final int listDivider1=0x7f090022;
+        public static final int listDivider2=0x7f090023;
+        public static final int mainLayout=0x7f090025;
+        public static final int nameColum=0x7f090020;
         public static final int other_options=0x7f090012;
         public static final int other_options_text=0x7f090013;
-        public static final int person=0x7f090016;
-        public static final int personText=0x7f090015;
-        public static final int pickDate=0x7f09001c;
-        public static final int pickTime=0x7f09001e;
-        public static final int scrollView1=0x7f090014;
+        public static final int person=0x7f090015;
+        public static final int personText=0x7f090014;
+        public static final int pickDate=0x7f09001b;
+        public static final int pickTime=0x7f09001d;
         public static final int scrollViewHelp=0x7f090007;
         public static final int system_element=0x7f090004;
         public static final int text1=0x7f090027;
         public static final int text2=0x7f090028;
-        public static final int timeDisplay=0x7f09001d;
-        public static final int totalAmount=0x7f090025;
+        public static final int timeDisplay=0x7f09001c;
+        public static final int totalAmount=0x7f090024;
         public static final int version_element=0x7f090000;
         public static final int version_value=0x7f090001;
     }
@@ -262,18 +262,35 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class style {
         public static final int CashControlTheme=0x7f06001f;
+        /**  =============================================================== 
+ Generic Text Styles 
+ =============================================================== 
+ Bold Text Font 
+         */
         public static final int boldFont=0x7f060000;
+        /**  Bold Help Text Font 
+         */
         public static final int boldFontHelpDescription=0x7f060001;
+        /**  =============================================================== 
+ Generic Button Styles and Font 
+ =============================================================== 
+ Button Font 
+         */
         public static final int buttonFont=0x7f060003;
+        /**  Button Style 
+         */
         public static final int buttonStyle=0x7f060004;
         public static final int button_bl=0x7f060010;
+        /**  List Item Text Font 
+         */
         public static final int itemFont=0x7f060002;
         public static final int list_bl=0x7f060011;
         /**  =============================================================== 
- Generic Styles 
+ Generic List Divider Styles 
  =============================================================== 
+ Loans List Style 
          */
-        public static final int list_divider=0x7f060007;
+        public static final int list_divider=0x7f060005;
         public static final int list_divider_bl=0x7f060013;
         public static final int list_divider_wh=0x7f06001e;
         public static final int list_item_bl=0x7f060012;
@@ -291,9 +308,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int text_check_box_wh=0x7f060019;
         public static final int text_current_activity_green_wh=0x7f06001a;
         public static final int text_large_bl=0x7f06000d;
-        public static final int text_large_wh=0x7f060005;
+        public static final int text_large_wh=0x7f060006;
         public static final int text_regular_bl=0x7f06000e;
-        public static final int text_regular_wh=0x7f060006;
+        public static final int text_regular_wh=0x7f060007;
         public static final int text_subheader_bl=0x7f06000c;
         public static final int text_subheader_wh=0x7f060018;
         public static final int text_title_bl=0x7f06000a;
