@@ -30,6 +30,7 @@
     <string name="person">Person</string>
     <string name="description">Description</string>
     <string name="amount">Amount (€)</string>
+    <string name="alarmCheckBox">Set an alarm to remind?</string>
     <string name="dateSet">Set Alarm Date</string>
     <string name="timeSet">Set Alarm Time</string>
     <string name="confirm">Confirm</string>
