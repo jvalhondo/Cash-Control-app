@@ -146,10 +146,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int white_container_wh=0x7f020023;
     }
     public static final class id {
-        public static final int about=0x7f09002d;
-        public static final int adView=0x7f090026;
+        public static final int about=0x7f09002e;
+        public static final int adView=0x7f090027;
         public static final int addLoanIcon=0x7f090008;
-        public static final int add_newloan=0x7f09002b;
+        public static final int add_newloan=0x7f09002c;
         public static final int adding_loan=0x7f09000e;
         public static final int amount=0x7f090019;
         public static final int amountColum=0x7f090021;
@@ -158,25 +158,26 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int dateDisplay=0x7f09001a;
         public static final int date_element=0x7f090002;
         public static final int date_value=0x7f090003;
-        public static final int delete=0x7f09002a;
+        public static final int delete=0x7f09002b;
         public static final int deleteLoanIcon=0x7f09000c;
         public static final int deleting_loan=0x7f090010;
         public static final int description=0x7f090017;
         public static final int descriptionText=0x7f090016;
         public static final int developer_element=0x7f090005;
         public static final int developer_value=0x7f090006;
-        public static final int edit=0x7f090029;
+        public static final int edit=0x7f09002a;
         public static final int editLoanIcon=0x7f09000a;
         public static final int editing_loan=0x7f09000f;
         public static final int firstRelativeLayout=0x7f09001f;
-        public static final int help=0x7f09002c;
+        public static final int help=0x7f09002d;
         public static final int help_description=0x7f090009;
         public static final int how_to_add=0x7f09000b;
         public static final int how_to_delete=0x7f090011;
         public static final int how_to_edit=0x7f09000d;
         public static final int listDivider1=0x7f090022;
-        public static final int listDivider2=0x7f090023;
-        public static final int mainLayout=0x7f090025;
+        public static final int listDivider2=0x7f090024;
+        public static final int listDivider3=0x7f090026;
+        public static final int mainLayout=0x7f090023;
         public static final int nameColum=0x7f090020;
         public static final int other_options=0x7f090012;
         public static final int other_options_text=0x7f090013;
@@ -186,10 +187,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int pickTime=0x7f09001d;
         public static final int scrollViewHelp=0x7f090007;
         public static final int system_element=0x7f090004;
-        public static final int text1=0x7f090027;
-        public static final int text2=0x7f090028;
+        public static final int text1=0x7f090028;
+        public static final int text2=0x7f090029;
         public static final int timeDisplay=0x7f09001c;
-        public static final int totalAmount=0x7f090024;
+        public static final int totalAmount=0x7f090025;
         public static final int version_element=0x7f090000;
         public static final int version_value=0x7f090001;
     }

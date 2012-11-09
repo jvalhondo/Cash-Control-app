@@ -12,9 +12,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dip"
-            android:layout_marginTop="17dip"
+            android:layout_marginTop="15dip"
             android:text="@string/name_colum" />
-
         <TextView
             android:id="@+id/amountColum"
             style="@style/boldFont"
@@ -24,49 +23,52 @@
             android:layout_alignParentTop="true"
             android:layout_marginRight="5dip"
             android:layout_marginTop="15dip"
-            android:text="@string/amount_colum"
-            android:textStyle="bold" />
-
+            android:text="@string/amount_colum" />
         <View
             android:id="@+id/listDivider1"
             android:layout_width="fill_parent"
             android:layout_height="5sp"
             android:layout_below="@id/nameColum"
-            android:layout_marginBottom="10dip"
+            android:layout_marginBottom="5dip"
             android:layout_marginTop="5dip"
             android:background="@drawable/divider_background" />
         <ListView 
 	         android:id="@+id/android:list"
-	         android:layout_width="wrap_content"
+	         android:layout_width="fill_parent"
 	         android:layout_height="wrap_content"
-	         android:layout_below="@id/nameColum"
-	         android:layout_marginTop="10dip"
+	         android:layout_below="@id/listDivider1"
+	         android:layout_above="@+id/mainLayout"
+	         android:layout_marginTop="5dip"
 	         android:cacheColorHint="#00000000" />
 	  	 <TextView 
 	  	     android:id="@+id/android:empty"
 	  	     style="@style/itemFont"
 	         android:layout_width="wrap_content"
 	         android:layout_height="wrap_content"
-	         android:layout_below="@id/nameColum"
+	         android:layout_below="@id/listDivider1"
 	         android:layout_marginTop="10dip"
 	         android:layout_marginLeft="10dip"
-	         android:text="@string/no_loans"/>
+	         android:text="@string/no_loans"/>         	    
+	<RelativeLayout 
+	    android:id="@+id/mainLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
         <View
             android:id="@+id/listDivider2"
             android:layout_width="fill_parent"
-            android:layout_height="5sp"
-            android:layout_below="@id/android:list"
-            android:layout_marginBottom="10dip"
+            android:layout_height="3sp"
+            android:layout_below="@id/mainLayout"
+            android:layout_marginBottom="5dip"
             android:layout_marginTop="5dip"
             android:background="@drawable/divider_background" />
-
-        <TextView
+    	<TextView
             style="@style/boldFont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/listDivider2"
             android:layout_marginLeft="5dip"
-            android:layout_marginTop="10dip"
+            android:layout_marginBottom="5dip"
             android:text="@string/total_amount" />
 
         <TextView
@@ -77,23 +79,25 @@
             android:layout_alignParentRight="true"
             android:layout_below="@id/listDivider2"
             android:layout_marginRight="5dip"
-            android:layout_marginTop="10dip"
+            android:layout_marginBottom="5dip"
             android:text="" />
-    
-	<RelativeLayout 
-	    android:id="@+id/mainLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" >
-
-    <com.google.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        ads:adSize="BANNER"
-        ads:adUnitId="a15096a6cac25cf"
-        ads:loadAdOnCreate="true"
-        ads:testDevices="TEST_EMULATOR, 04C06FB6ADF7" >
-    </com.google.ads.AdView>
+        <View
+            android:id="@+id/listDivider3"
+            android:layout_width="fill_parent"
+            android:layout_height="3sp"
+            android:layout_below="@id/totalAmount"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="5dip"
+            android:background="@drawable/divider_background" />
+		<com.google.ads.AdView
+	        android:id="@+id/adView"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/listDivider3"
+	        ads:adSize="BANNER"
+	        ads:adUnitId="a15096a6cac25cf"
+	        ads:loadAdOnCreate="true"
+	        ads:testDevices="TEST_EMULATOR, 04C06FB6ADF7" >
+    	</com.google.ads.AdView>	
     	</RelativeLayout>
 </RelativeLayout>
