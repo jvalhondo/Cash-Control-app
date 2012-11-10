@@ -136,7 +136,7 @@ public class CashControl extends ListActivity {
                 startActivityForResult(editIntent, ACTIVITY_EDIT);
                 return true;
              // Share Via option clicked
-            case R.id.shareVia:
+            case R.id.remind:
             	Intent shareViaIntent = new Intent(android.content.Intent.ACTION_SEND);
             	shareViaIntent.setType("text/plain");
             	Cursor loanCursor = mDbHelper.fetchNote(id);
@@ -144,7 +144,7 @@ public class CashControl extends ListActivity {
                 String person = loanCursor.getString(loanCursor.getColumnIndexOrThrow(LoansDbAdapter.KEY_PERSON));
                 String description = loanCursor.getString(loanCursor.getColumnIndexOrThrow(LoansDbAdapter.KEY_DESCRIPTION));
                 String amount = loanCursor.getString(loanCursor.getColumnIndexOrThrow(LoansDbAdapter.KEY_AMOUNT));
-            	String shareBody = "Remember " + person + " that I lent you the amount of " + amount + " for " + description + 
+            	String shareBody = "Remember " + person + " that I lent you the amount of " + amount + "€ for " + description + 
             			". Could you pay me back when you can?";
             	shareViaIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, R.string.shareSubject);
             	shareViaIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);

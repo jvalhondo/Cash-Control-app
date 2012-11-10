@@ -2,8 +2,6 @@ package jvalhondo.android.CashControl.app;
 
 import java.util.Calendar;
 
-import jvalhondo.android.CashControl.app.R;
-
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
@@ -20,6 +18,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -133,6 +132,27 @@ public class LoanEdit extends Activity {
         }
         
         populateFields();
+        
+        ImageButton imageButton = (ImageButton) findViewById(R.id.imageButton);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+			
+		    public void onClick(View view) {
+		    	if (mRowId != null) {
+			    	Intent shareViaIntent = new Intent(android.content.Intent.ACTION_SEND);
+	            	shareViaIntent.setType("text/plain");
+	            	Cursor loanCursor = mDbHelper.fetchNote(mRowId);
+	                startManagingCursor(loanCursor);
+	                String person = loanCursor.getString(loanCursor.getColumnIndexOrThrow(LoansDbAdapter.KEY_PERSON));
+	                String description = loanCursor.getString(loanCursor.getColumnIndexOrThrow(LoansDbAdapter.KEY_DESCRIPTION));
+	                String amount = loanCursor.getString(loanCursor.getColumnIndexOrThrow(LoansDbAdapter.KEY_AMOUNT));
+	            	String shareBody = "Remember " + person + " that I lent you the amount of " + amount + "€ for " + description + 
+	            			". Could you pay me back when you can?";
+	            	shareViaIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, R.string.shareSubject);
+	            	shareViaIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+	            	startActivity(Intent.createChooser(shareViaIntent, "Share via"));
+		    	}
+		    }    
+		});
         // capture our View element Confirm Button and add a Listener
         Button confirmButton = (Button) findViewById(R.id.confirm);
 		confirmButton.setOnClickListener(new View.OnClickListener() {

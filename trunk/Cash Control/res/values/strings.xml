@@ -13,9 +13,10 @@
     
     <string name="menu_insert">Add Loan</string>
     <string name="menu_edit">Edit Loan</string>
-    <string name="menu_shareVia">Share via</string>
+    <string name="menu_remind">Remind Loan</string>
     <string name="shareSubject">Loan Reminder</string>
     <string name="menu_help">Help</string>
+    <string name="share_description">Share it from different ways</string>
     <string name="menu_about">About</string>
     <string name="menu_delete">Delete Loan</string>
     <string name="context_menu_title">Choose an action:</string>
@@ -35,6 +36,7 @@
     <string name="alarmCheckBox">Set an alarm to remind?</string>
     <string name="dateSet">Set Alarm Date</string>
     <string name="timeSet">Set Alarm Time</string>
+    <string name="remindIt">Remind It!</string>
     <string name="confirm">Confirm</string>
     
     <string name="help_title">Help</string>
