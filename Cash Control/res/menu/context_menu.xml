@@ -4,8 +4,8 @@
         android:id="@+id/edit"
 		android:title="@string/menu_edit" />
       <item 
-        android:id="@+id/shareVia"
-        android:title="@string/menu_shareVia" />
+        android:id="@+id/remind"
+        android:title="@string/menu_remind" />
      <item 
         android:id="@+id/delete"
         android:title="@string/menu_delete" />
