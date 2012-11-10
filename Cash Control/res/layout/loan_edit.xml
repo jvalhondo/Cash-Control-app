@@ -20,11 +20,11 @@
 	        android:id="@+id/person"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
+	        android:inputType="textCapSentences"
 	        style="@style/itemFont"
 	        android:layout_marginBottom="10dip"
 	        android:background="@android:drawable/editbox_background"
-	        android:ems="10"
-	        android:inputType="textPersonName" />
+	        android:ems="10" />
 	    <TextView
 	        android:id="@+id/descriptionText"
 	        android:layout_width="match_parent"
@@ -37,10 +37,10 @@
 	        android:id="@+id/description"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
+	        android:inputType="textCapSentences"
 	        style="@style/itemFont"
 	        android:layout_marginBottom="10dip"
 	        android:background="@android:drawable/editbox_background"
-	        android:inputType="none"
 	        android:scrollbars="vertical" />
 	    <TextView
 	        android:id="@+id/amountText"

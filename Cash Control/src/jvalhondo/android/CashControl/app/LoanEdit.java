@@ -47,6 +47,9 @@ public class LoanEdit extends Activity {
     private int mHour;
     private int mMinute;
     static final int TIME_DIALOG_ID = 1;
+    
+    private Calendar dateTimeCalendar;
+    private Calendar alarmCalendar;
     // for the correctAlarmSet() method
     private Calendar rightNow;
 	private int yearRightNow;
@@ -79,12 +82,12 @@ public class LoanEdit extends Activity {
                 showDialog(DATE_DIALOG_ID);
             }
         });
-        // get the current date
-        final Calendar dateCalendar = Calendar.getInstance();
-        mYear = dateCalendar.get(Calendar.YEAR);
+        // get the current Date and Time Calendar
+        dateTimeCalendar = Calendar.getInstance();
+        mYear = dateTimeCalendar.get(Calendar.YEAR);
         // Month is 0 based so add 1
-        mMonth = dateCalendar.get(Calendar.MONTH);
-        mDay = dateCalendar.get(Calendar.DAY_OF_MONTH);
+        mMonth = dateTimeCalendar.get(Calendar.MONTH);
+        mDay = dateTimeCalendar.get(Calendar.DAY_OF_MONTH);
         // display the current date
         updateDateDisplay();
         
@@ -98,10 +101,8 @@ public class LoanEdit extends Activity {
                 showDialog(TIME_DIALOG_ID);
             }
         });
-        // get the current time
-        final Calendar timeCalendar = Calendar.getInstance();
-        mHour = timeCalendar.get(Calendar.HOUR_OF_DAY);
-        mMinute = timeCalendar.get(Calendar.MINUTE);
+        mHour = dateTimeCalendar.get(Calendar.HOUR_OF_DAY);
+        mMinute = dateTimeCalendar.get(Calendar.MINUTE);
         // display the current date
         updateTimeDisplay();
         // capture our View element Check Box and add a Listener
@@ -154,10 +155,10 @@ public class LoanEdit extends Activity {
 		    				+ " and today is: " + dayRightNow	+ "-" + monthRightNow + "-"
 		    				+ yearRightNow + " at " + hourRightNowError + ":" + minuteRightNowError );	
 		    	} else{
-		    		setResult(RESULT_OK);
 		    		Toast.makeText(getBaseContext(), "Loan saved!",Toast.LENGTH_SHORT).show();
-		    		finish();
 		    		if (mAlarmCheckBox.isChecked()) upDateNotifications();
+		    		setResult(RESULT_OK);
+		    		finish();
 		    	}
 		    }    
 		});
@@ -196,26 +197,29 @@ public class LoanEdit extends Activity {
 	
 	// Update Alarms that has been set
 	private void upDateNotifications() {
-		
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTimeInMillis(System.currentTimeMillis());
+		// Get the Date and Time right now
+		rightNow = Calendar.getInstance();
+
+		alarmCalendar = Calendar.getInstance();
+		alarmCalendar.setTimeInMillis(System.currentTimeMillis());
 		// setting alarm date
-		calendar.set(Calendar.MONTH, mMonth);
-		calendar.set(Calendar.DAY_OF_MONTH, mDay);
-		calendar.set(Calendar.YEAR, mYear);
+		alarmCalendar.set(Calendar.MONTH, mMonth);
+		alarmCalendar.set(Calendar.DAY_OF_MONTH, mDay);
+		alarmCalendar.set(Calendar.YEAR, mYear);
 		// setting alarm time
-		calendar.set(Calendar.HOUR_OF_DAY, mHour);
-		calendar.set(Calendar.MINUTE, mMinute);
-		calendar.set(Calendar.SECOND, 0);
-		calendar.set(Calendar.MILLISECOND, 0);
-		// We want the alarm to go off 30 seconds from now.
-        //calendar.add(Calendar.SECOND, 30);
+		alarmCalendar.set(Calendar.HOUR_OF_DAY, mHour);
+		alarmCalendar.set(Calendar.MINUTE, mMinute);
+		alarmCalendar.set(Calendar.SECOND, 0);
+		alarmCalendar.set(Calendar.MILLISECOND, 0);
+		
+		// int alarmTime = alarmCalendar.get(Calendar.MINUTE) - rightNow.get(Calendar.MINUTE);
+		// Toast.makeText(getBaseContext(), alarmTime,Toast.LENGTH_SHORT).show();
 		
 		Intent alarmIntent = new Intent(this, OneShotAlarm.class);
 		PendingIntent pendingIntentSender = PendingIntent.getBroadcast(this,
                 0, alarmIntent, 0);
 		AlarmManager alarmManager = (AlarmManager) LoanEdit.this.getSystemService(Context.ALARM_SERVICE);
-		alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntentSender);
+		alarmManager.set(AlarmManager.RTC_WAKEUP, alarmCalendar.getTimeInMillis(), pendingIntentSender);
 	}
 	
 	// is call when an error should be alert

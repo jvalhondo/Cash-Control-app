@@ -146,10 +146,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int white_container_wh=0x7f020023;
     }
     public static final class id {
-        public static final int about=0x7f09002f;
+        public static final int about=0x7f090030;
         public static final int adView=0x7f090028;
         public static final int addLoanIcon=0x7f090008;
-        public static final int add_newloan=0x7f09002d;
+        public static final int add_newloan=0x7f09002e;
         public static final int adding_loan=0x7f09000e;
         public static final int alarmCheckBox=0x7f09001a;
         public static final int amount=0x7f090019;
@@ -159,7 +159,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int dateDisplay=0x7f09001c;
         public static final int date_element=0x7f090002;
         public static final int date_value=0x7f090003;
-        public static final int delete=0x7f09002c;
+        public static final int delete=0x7f09002d;
         public static final int deleteLoanIcon=0x7f09000c;
         public static final int deleting_loan=0x7f090010;
         public static final int description=0x7f090017;
@@ -170,7 +170,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int editLoanIcon=0x7f09000a;
         public static final int editing_loan=0x7f09000f;
         public static final int firstRelativeLayout=0x7f090020;
-        public static final int help=0x7f09002e;
+        public static final int help=0x7f09002f;
         public static final int help_description=0x7f090009;
         public static final int how_to_add=0x7f09000b;
         public static final int how_to_delete=0x7f090011;
@@ -187,6 +187,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int pickDate=0x7f09001b;
         public static final int pickTime=0x7f09001d;
         public static final int scrollViewHelp=0x7f090007;
+        public static final int shareVia=0x7f09002c;
         public static final int system_element=0x7f090004;
         public static final int text1=0x7f090029;
         public static final int text2=0x7f09002a;
@@ -207,61 +208,63 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int main_menu=0x7f080001;
     }
     public static final class string {
-        public static final int about_title=0x7f05001c;
-        public static final int adding_loan=0x7f050027;
-        public static final int alarmCheckBox=0x7f050017;
-        public static final int alarm_controller=0x7f050011;
-        public static final int alert_dialog_cancel=0x7f05000e;
-        public static final int alert_dialog_confirm=0x7f05000f;
-        public static final int amount=0x7f050016;
+        public static final int about_title=0x7f05001e;
+        public static final int adding_loan=0x7f050029;
+        public static final int alarmCheckBox=0x7f050019;
+        public static final int alarm_controller=0x7f050013;
+        public static final int alert_dialog_cancel=0x7f050010;
+        public static final int alert_dialog_confirm=0x7f050011;
+        public static final int amount=0x7f050018;
         public static final int amount_colum=0x7f050005;
         public static final int app_name=0x7f050000;
-        public static final int confirm=0x7f05001a;
-        public static final int context_menu_title=0x7f05000c;
-        public static final int dateSet=0x7f050018;
-        public static final int date_element=0x7f050020;
-        public static final int date_value=0x7f050021;
-        public static final int delete_confirm_question=0x7f05000d;
-        public static final int deleting_loan=0x7f05002b;
-        public static final int description=0x7f050015;
-        public static final int developer_element=0x7f050023;
-        public static final int developer_value=0x7f050024;
-        public static final int edit_loan_title=0x7f05001d;
-        public static final int editing_loan=0x7f050029;
-        public static final int help_description=0x7f050026;
-        public static final int help_title=0x7f05001b;
-        public static final int how_to_add=0x7f050028;
-        public static final int how_to_delete=0x7f05002c;
-        public static final int how_to_edit=0x7f05002a;
+        public static final int confirm=0x7f05001c;
+        public static final int context_menu_title=0x7f05000e;
+        public static final int dateSet=0x7f05001a;
+        public static final int date_element=0x7f050022;
+        public static final int date_value=0x7f050023;
+        public static final int delete_confirm_question=0x7f05000f;
+        public static final int deleting_loan=0x7f05002d;
+        public static final int description=0x7f050017;
+        public static final int developer_element=0x7f050025;
+        public static final int developer_value=0x7f050026;
+        public static final int edit_loan_title=0x7f05001f;
+        public static final int editing_loan=0x7f05002b;
+        public static final int help_description=0x7f050028;
+        public static final int help_title=0x7f05001d;
+        public static final int how_to_add=0x7f05002a;
+        public static final int how_to_delete=0x7f05002e;
+        public static final int how_to_edit=0x7f05002c;
         /**  =============================================================== 
  Help Activity Strings 
  =============================================================== 
          */
-        public static final int imageContentDescription=0x7f050025;
-        public static final int menu_about=0x7f05000a;
-        public static final int menu_delete=0x7f05000b;
+        public static final int imageContentDescription=0x7f050027;
+        public static final int menu_about=0x7f05000c;
+        public static final int menu_delete=0x7f05000d;
         public static final int menu_edit=0x7f050008;
-        public static final int menu_help=0x7f050009;
+        public static final int menu_help=0x7f05000b;
         public static final int menu_insert=0x7f050007;
+        public static final int menu_shareVia=0x7f050009;
         public static final int name_colum=0x7f050004;
         public static final int no_loans=0x7f050001;
-        public static final int one_shot_alarm=0x7f050012;
-        public static final int one_shot_received=0x7f050010;
-        public static final int one_shot_scheduled=0x7f050013;
-        public static final int other_options=0x7f05002d;
-        public static final int other_options_text=0x7f05002e;
-        public static final int person=0x7f050014;
-        public static final int system_element=0x7f050022;
+        public static final int one_shot_alarm=0x7f050014;
+        public static final int one_shot_received=0x7f050012;
+        public static final int one_shot_scheduled=0x7f050015;
+        public static final int other_options=0x7f05002f;
+        public static final int other_options_text=0x7f050030;
+        public static final int person=0x7f050016;
+        public static final int shareSubject=0x7f05000a;
+        public static final int system_element=0x7f050024;
         public static final int table_amount=0x7f050003;
         public static final int table_contact=0x7f050002;
-        public static final int timeSet=0x7f050019;
+        public static final int timeSet=0x7f05001b;
         public static final int total_amount=0x7f050006;
         /**  =============================================================== 
  About Activity Strings 
  =============================================================== 
          */
-        public static final int version_element=0x7f05001e;
-        public static final int version_value=0x7f05001f;
+        public static final int version_element=0x7f050020;
+        public static final int version_value=0x7f050021;
     }
     public static final class style {
         public static final int CashControlTheme=0x7f06001f;
