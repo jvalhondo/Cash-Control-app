@@ -135,6 +135,21 @@ public class CashControl extends ListActivity {
                 editIntent.putExtra(LoansDbAdapter.KEY_ROWID, info.id);
                 startActivityForResult(editIntent, ACTIVITY_EDIT);
                 return true;
+             // Share Via option clicked
+            case R.id.shareVia:
+            	Intent shareViaIntent = new Intent(android.content.Intent.ACTION_SEND);
+            	shareViaIntent.setType("text/plain");
+            	Cursor loanCursor = mDbHelper.fetchNote(id);
+                startManagingCursor(loanCursor);
+                String person = loanCursor.getString(loanCursor.getColumnIndexOrThrow(LoansDbAdapter.KEY_PERSON));
+                String description = loanCursor.getString(loanCursor.getColumnIndexOrThrow(LoansDbAdapter.KEY_DESCRIPTION));
+                String amount = loanCursor.getString(loanCursor.getColumnIndexOrThrow(LoansDbAdapter.KEY_AMOUNT));
+            	String shareBody = "Remember " + person + " that I lent you the amount of " + amount + " for " + description + 
+            			". Could you pay me back when you can?";
+            	shareViaIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, R.string.shareSubject);
+            	shareViaIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+            	startActivity(Intent.createChooser(shareViaIntent, "Share via"));
+                return true;
             // Delete option clicked
             case R.id.delete:
             	AlertDialog.Builder alertDialogDelete = new AlertDialog.Builder(CashControl.this);
