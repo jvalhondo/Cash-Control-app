@@ -19,7 +19,7 @@ public class OneShotAlarm extends BroadcastReceiver {
     	mNotificationManager= (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
     	// creating a Notification
-		int icon = R.drawable.money_pig_dapino_webdesign_64_64;
+		int icon = R.drawable.piggy_bank_256_256_32b;
 		CharSequence tickerText = "Remember that you lent some money!";
 		long when = System.currentTimeMillis();
 		

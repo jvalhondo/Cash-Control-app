@@ -125,19 +125,11 @@
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:orientation="horizontal" >
-		    <TextView
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_marginLeft="5dip"
-		        android:layout_marginTop="2dip"
-		        android:layout_gravity="left"
-		        style="@style/boldFont"
-		        android:text="@string/remindIt" />
+		    
 		    <ImageButton
 		        android:id="@+id/imageButton"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:layout_marginTop="1dip"
 		        android:contentDescription="@string/share_description"
 		        android:src="@drawable/social_icon_share" />
 		 </LinearLayout>
