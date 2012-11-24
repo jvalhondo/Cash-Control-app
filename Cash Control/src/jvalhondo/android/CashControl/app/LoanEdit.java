@@ -9,6 +9,7 @@ import android.app.Dialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -218,7 +219,27 @@ public class LoanEdit extends SherlockActivity {
     			return true;
     			
     		case R.id.delete_action_bar:
-    			Toast.makeText(this, "Delete pulsado", Toast.LENGTH_SHORT).show();
+    			AlertDialog.Builder alertDialogDelete = new AlertDialog.Builder(LoanEdit.this);
+            	alertDialogDelete.setMessage(getResources().getString(R.string.delete_confirm_question));
+            	alertDialogDelete.setNegativeButton(getResources().getString(R.string.alert_dialog_cancel), null);
+            	alertDialogDelete.setPositiveButton(getResources().getString(R.string.alert_dialog_confirm), new AlertDialog.OnClickListener() {
+
+    				// Delete confirm button
+    				public void onClick(DialogInterface dialog, int which) {
+    					 if (mRowId != null) {
+    						 mDbHelper.deleteLoan(mRowId);
+    						 setResult(RESULT_OK);
+    						 finish();
+    					 } else {
+    						 // set params to empty for not saving the loan
+    						 mPersonText.setText("");
+    						 mDescriptionText.setText("");
+    						 mAmountText.setText("");
+    						 setResult(RESULT_OK);
+    						 finish();
+    					 }
+    				}});
+            	alertDialogDelete.show();			
     			return true;
     		
     		default:
@@ -392,7 +413,7 @@ public class LoanEdit extends SherlockActivity {
 	     
 	     if( someFieldsEmpty() == true ) {
 	    	 
-	    	 Toast.makeText(getBaseContext(), "Loan not saved! Some fileds were empty.",Toast.LENGTH_SHORT).show();
+	    	 Toast.makeText(getBaseContext(), "Loan not saved!",Toast.LENGTH_SHORT).show();
 	     }
 	     
 	     else {

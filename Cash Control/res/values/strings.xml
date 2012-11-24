@@ -51,10 +51,10 @@
 	<!-- About Activity Strings -->
 	<!-- =============================================================== -->
 	<string name="version_element">Version:</string>
-	<string name="version_value">1.0</string>
+	<string name="version_value">1.2</string>
     <string name="date_element">Date:</string>
-    <string name="date_value">20/07/2012</string>
-    <string name="system_element">Android 2.3.3</string>
+    <string name="date_value">24/11/2012</string>
+    <string name="system_element">Android 1.5 and further</string>
     <string name="developer_element">Developer:</string>
     <string name="developer_value">Jorge Valhondo Rama</string>
     
