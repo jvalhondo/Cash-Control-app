@@ -11,6 +11,10 @@
     <string name="amount_colum">Amount(€):</string>
     <string name="total_amount">Total Amount(€):</string>
     
+    <string name="save_action_bar">Save</string>
+    <string name="social_share_action_bar">Social Share</string>
+    <string name="delete_action_bar">Delete</string>
+    
     <string name="menu_insert">Add Loan</string>
     <string name="menu_edit">Edit Loan</string>
     <string name="menu_remind">Remind Loan</string>

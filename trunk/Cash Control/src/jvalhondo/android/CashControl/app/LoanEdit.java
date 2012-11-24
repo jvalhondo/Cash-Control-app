@@ -2,7 +2,6 @@ package jvalhondo.android.CashControl.app;
 
 import java.util.Calendar;
 
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -18,12 +17,16 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-public class LoanEdit extends Activity {
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
+
+public class LoanEdit extends SherlockActivity {
 	// for fields Person, Description, Amount
 	private EditText mPersonText;
 	private EditText mDescriptionText;
@@ -133,24 +136,6 @@ public class LoanEdit extends Activity {
         
         populateFields();
         
-        ImageButton imageButton = (ImageButton) findViewById(R.id.imageButton);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-			
-		    public void onClick(View view) {
-		    	if (someFieldsEmpty()) {
-		    		Toast.makeText(getBaseContext(), "Share option not able! Some fields are empty.",Toast.LENGTH_SHORT).show();
-		    	} else {
-		    		Intent shareViaIntent = new Intent(android.content.Intent.ACTION_SEND);
-	            	shareViaIntent.setType("text/plain");
-	            	String shareBody = "Remember " + mPersonText.getText().toString() + " that I lent you the amount of " +
-	            			mAmountText.getText().toString() + "€ for " + mDescriptionText.getText().toString() + 
-	            			". Could you pay me back when you can?";
-	            	shareViaIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, R.string.shareSubject);
-	            	shareViaIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-	            	startActivity(Intent.createChooser(shareViaIntent, "Share via"));
-		    	}
-		    }    
-		});
         // capture our View element Confirm Button and add a Listener
         Button confirmButton = (Button) findViewById(R.id.confirm);
 		confirmButton.setOnClickListener(new View.OnClickListener() {
@@ -181,6 +166,65 @@ public class LoanEdit extends Activity {
 		    }    
 		});
 	} // close onCreate method
+	
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getSupportMenuInflater();
+        inflater.inflate(R.menu.action_bar_menu, menu);
+        return true;
+    }
+ 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	switch(item.getItemId()){
+    	
+    		case R.id.save_action_bar:
+    			if( someFieldsEmpty() == true ){
+		    		Toast.makeText(getBaseContext(), "Loan not saved! Some fields are empty.",Toast.LENGTH_SHORT).show();
+		    	} else if(mAlarmCheckBox.isChecked() == true & correctAlarmSet() == false ) { 
+		    		// Month is 0 based so add 1
+		    		int mMonthError = mMonth + 1;
+		    		// adding a 0 if minutes or hours are between 0 or 9 included
+		    		String mHourError = pad(mHour);
+		    		String mMinuteError = pad(mMinute);
+		    		String hourRightNowError = pad(hourRightNow);
+		    		String minuteRightNowError = pad(minuteRightNow);
+		    		
+		    		showErrorMessage("Error: Alarm set not right", "Alarm set: " + mDay	+ "-" + mMonthError
+		    				+ "-" + mYear + " at " + mHourError + ":" + mMinuteError
+		    				+ " and today is: " + dayRightNow	+ "-" + monthRightNow + "-"
+		    				+ yearRightNow + " at " + hourRightNowError + ":" + minuteRightNowError );	
+		    	} else{
+		    		Toast.makeText(getBaseContext(), "Loan saved!",Toast.LENGTH_SHORT).show();
+		    		if (mAlarmCheckBox.isChecked()) upDateNotifications();
+		    		setResult(RESULT_OK);
+		    		finish();
+		    	}
+    			return true;
+    			
+    		case R.id.social_share_action_bar:
+    			if (someFieldsEmpty()) {
+		    		Toast.makeText(getBaseContext(), "Share option not able! Some fields are empty.",Toast.LENGTH_SHORT).show();
+		    	} else {
+		    		Intent shareViaIntent = new Intent(android.content.Intent.ACTION_SEND);
+	            	shareViaIntent.setType("text/plain");
+	            	String shareBody = "Remember " + mPersonText.getText().toString() + " that I lent you the amount of " +
+	            			mAmountText.getText().toString() + "€ for " + mDescriptionText.getText().toString() + 
+	            			". Could you pay me back when you can?";
+	            	shareViaIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, R.string.shareSubject);
+	            	shareViaIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+	            	startActivity(Intent.createChooser(shareViaIntent, "Share via"));
+		    	}
+    			return true;
+    			
+    		case R.id.delete_action_bar:
+    			Toast.makeText(this, "Delete pulsado", Toast.LENGTH_SHORT).show();
+    			return true;
+    		
+    		default:
+    			return super.onOptionsItemSelected(item);
+    	}
+    }
 
 	// check the alarm is set right
 	private boolean correctAlarmSet() {
