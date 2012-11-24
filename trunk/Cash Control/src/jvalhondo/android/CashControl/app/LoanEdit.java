@@ -137,15 +137,13 @@ public class LoanEdit extends Activity {
         imageButton.setOnClickListener(new View.OnClickListener() {
 			
 		    public void onClick(View view) {
-		    	if (mRowId != null) {
-			    	Intent shareViaIntent = new Intent(android.content.Intent.ACTION_SEND);
+		    	if (someFieldsEmpty()) {
+		    		Toast.makeText(getBaseContext(), "Share option not able! Some fields are empty.",Toast.LENGTH_SHORT).show();
+		    	} else {
+		    		Intent shareViaIntent = new Intent(android.content.Intent.ACTION_SEND);
 	            	shareViaIntent.setType("text/plain");
-	            	Cursor loanCursor = mDbHelper.fetchNote(mRowId);
-	                startManagingCursor(loanCursor);
-	                String person = loanCursor.getString(loanCursor.getColumnIndexOrThrow(LoansDbAdapter.KEY_PERSON));
-	                String description = loanCursor.getString(loanCursor.getColumnIndexOrThrow(LoansDbAdapter.KEY_DESCRIPTION));
-	                String amount = loanCursor.getString(loanCursor.getColumnIndexOrThrow(LoansDbAdapter.KEY_AMOUNT));
-	            	String shareBody = "Remember " + person + " that I lent you the amount of " + amount + "€ for " + description + 
+	            	String shareBody = "Remember " + mPersonText.getText().toString() + " that I lent you the amount of " +
+	            			mAmountText.getText().toString() + "€ for " + mDescriptionText.getText().toString() + 
 	            			". Could you pay me back when you can?";
 	            	shareViaIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, R.string.shareSubject);
 	            	shareViaIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
