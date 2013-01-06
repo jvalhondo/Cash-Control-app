@@ -1,7 +1,6 @@
 package jvalhondo.android.CashControl.app;
 
 import java.util.Calendar;
-
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -21,8 +20,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
+// Action Bar Sherlock imports
 import com.actionbarsherlock.app.SherlockActivity;
+// These 3 can be import hear and be used
+// on any other class which extends SherlockActivity 
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
@@ -70,6 +71,9 @@ public class LoanEdit extends SherlockActivity {
 		
 		setContentView(R.layout.loan_edit);
 		setTitle(R.string.edit_loan_title);
+		
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		// getSupportActionBar().setDisplayUseLogoEnabled(false);
 		
 		// capture our Text elements
 		mPersonText = (EditText) findViewById(R.id.person);
@@ -171,7 +175,7 @@ public class LoanEdit extends SherlockActivity {
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getSupportMenuInflater();
-        inflater.inflate(R.menu.action_bar_menu, menu);
+        inflater.inflate(R.menu.action_bar_edit_menu, menu);
         return true;
     }
  
