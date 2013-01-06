@@ -1036,7 +1036,7 @@ containing a value of this type.
         public static final int list_item_wh=0x7f020086;
         public static final int list_item_wh_pressed=0x7f020087;
         public static final int list_item_wh_selected=0x7f020088;
-        public static final int loan_image=0x7f020089;
+        public static final int money_piggy_bank_no_loans_icon=0x7f020089;
         public static final int piggy_bank_16_16_32b=0x7f02008a;
         public static final int piggy_bank_24_24_32=0x7f02008b;
         public static final int piggy_bank_24_24_32b=0x7f02008c;

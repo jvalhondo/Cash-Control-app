@@ -294,7 +294,7 @@ int drawable list_item_bl 0x7f020085
 int drawable list_item_wh 0x7f020086
 int drawable list_item_wh_pressed 0x7f020087
 int drawable list_item_wh_selected 0x7f020088
-int drawable loan_image 0x7f020089
+int drawable money_piggy_bank_no_loans_icon 0x7f020089
 int drawable piggy_bank_16_16_32b 0x7f02008a
 int drawable piggy_bank_24_24_32 0x7f02008b
 int drawable piggy_bank_24_24_32b 0x7f02008c
