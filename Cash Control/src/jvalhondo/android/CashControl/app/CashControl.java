@@ -1,25 +1,28 @@
 package jvalhondo.android.CashControl.app;
 
 import android.app.AlertDialog;
-import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
-
+// Action Bar SherLock import
+import com.actionbarsherlock.app.SherlockActivity;
+// Admob advertisements import
 import com.google.ads.AdView;
 
-public class CashControl extends ListActivity {
+public class CashControl extends SherlockActivity {
     private static final int ACTIVITY_CREATE = 0;
     private static final int ACTIVITY_EDIT = 1;
     		
@@ -27,42 +30,64 @@ public class CashControl extends ListActivity {
     private TextView mTotalAmount;
     
     private AdView adView;
+    
+    private ListView mListView;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loans_list);
-        
+        // Data Base
         mDbHelper = new LoansDbAdapter(this);
         mDbHelper.open();
-        
+        // Loans List View
+        mListView = (ListView) findViewById(android.R.id.list);
+        // create an Image Button Listener for creating the first loan
+        // This image button is only visible if the ListView is empty
+        // Detect if ListView is empty with setEmptyView() implemented on fillData()
+        ImageButton emptyAddLoanImgButton = (ImageButton) findViewById(R.id.emptyAddLoanImgButton);
+        emptyAddLoanImgButton.setOnClickListener(new View.OnClickListener() {
+        			
+        		public void onClick(View view) {
+        			Intent editIntent = new Intent(CashControl.this, LoanEdit.class);
+                    startActivityForResult(editIntent, ACTIVITY_EDIT);        		    	
+        		}
+        });
+        // Fill data on the List View
         fillData();
-
+        // Create an On Item Click Listener to the ListView
+        // editing/ updating when an element of the ListWiew is clicked
+        mListView.setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parnet, View view , int position, long id) {
+            	// start LoanEdit activity
+            	Intent editIntent = new Intent(CashControl.this, LoanEdit.class);
+                editIntent.putExtra(LoansDbAdapter.KEY_ROWID, id);
+                startActivityForResult(editIntent, ACTIVITY_EDIT);
+            }
+        });
+        // Implements a long click listener to the ListView
+        registerForContextMenu(mListView);
+        // Total amount element
         mTotalAmount = (TextView) findViewById(R.id.totalAmount);
         mTotalAmount.setText(Float.toString(totalAmount()));
-        
-        registerForContextMenu(getListView());
-
     } // close onCreate method
 
     private void fillData() {
         // Get all of the rows from the database and create the item list
         Cursor loansCursor = mDbHelper.fetchAllNotes();
         startManagingCursor(loansCursor);
-
         // Create an array to specify the fields we want to display in the list (only PERSON)
         String[] from = new String[]{LoansDbAdapter.KEY_PERSON, LoansDbAdapter.KEY_AMOUNT};
-        
         // and an array of the fields we want to bind those fields to (in this case just text1)
         int[] to = new int[]{R.id.text1, R.id.text2};
-
         // Now create a simple cursor adapter and set it to display
         SimpleCursorAdapter loans = 
             new SimpleCursorAdapter(this, R.layout.loans_row, loansCursor, from, to);
-        setListAdapter(loans);
+        mListView.setEmptyView(findViewById(android.R.id.empty));
+        mListView.setAdapter(loans);
+        // setListAdapter(loans);
     }
-    
    
     public float totalAmount() {
     	// for getting total amount parameter
@@ -81,30 +106,30 @@ public class CashControl extends ListActivity {
     	return totalAmount;
     }
 
-    // generate the bottom main menu
-    public boolean onCreateOptionsMenu(Menu menu) {
-    	MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
+    // generate the ActionBarSherlock options
+    public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
+    	com.actionbarsherlock.view.MenuInflater inflater = getSupportMenuInflater();
+        inflater.inflate(R.menu.action_bar_main_menu, menu);
         return true;
     }
     
     // main menu: bottom menu with add, help, about options
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
             // Add Loan button clicked
-            case R.id.add_newloan:
-            	Intent editIntent = new Intent(this, LoanEdit.class);
+            case R.id.add_action_bar:
+            	Intent editIntent = new Intent(CashControl.this, LoanEdit.class);
                 startActivityForResult(editIntent, ACTIVITY_CREATE);
                 return true;
             // Help button clicked    
-            case R.id.help:
-            	Intent helpIntent = new Intent(this, HelpActivity.class);
+            case R.id.help_action_bar:
+            	Intent helpIntent = new Intent(CashControl.this, HelpActivity.class);
             	startActivity(helpIntent);
                 return true;
             // About button clicked   
-            case R.id.about:
-            	Intent aboutIntent = new Intent(this, AboutActivity.class);
+            case R.id.about_action_bar:
+            	Intent aboutIntent = new Intent(CashControl.this, AboutActivity.class);
             	startActivity(aboutIntent);
                 return true;
                 
@@ -156,7 +181,6 @@ public class CashControl extends ListActivity {
             	alertDialogDelete.setMessage(getResources().getString(R.string.delete_confirm_question));
             	alertDialogDelete.setNegativeButton(getResources().getString(R.string.alert_dialog_cancel), null);
             	alertDialogDelete.setPositiveButton(getResources().getString(R.string.alert_dialog_confirm), new AlertDialog.OnClickListener() {
-
     				// Delete confirm button
     				public void onClick(DialogInterface dialog, int which) {
     					mDbHelper.deleteLoan(id);
@@ -166,18 +190,10 @@ public class CashControl extends ListActivity {
     				}});
             	alertDialogDelete.show();			
     			return true;
-            
+            // default option
             default:
                 return super.onContextItemSelected(item);
         }
-    }
-
-    // editing/ updating when an element of the ListWiew is clicked
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-        Intent editIntent = new Intent(this, LoanEdit.class);
-        editIntent.putExtra(LoansDbAdapter.KEY_ROWID, id);
-        startActivityForResult(editIntent, ACTIVITY_EDIT);
     }
 
     // we get the result of startActivityForResult through this method

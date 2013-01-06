@@ -31,22 +31,36 @@
             android:layout_marginTop="5dip"
             android:background="@drawable/divider_background" />
         <ListView 
-	         android:id="@+id/android:list"
+	         android:id="@android:id/list"
 	         android:layout_width="fill_parent"
 	         android:layout_height="wrap_content"
 	         android:layout_below="@id/listDivider1"
 	         android:layout_above="@+id/mainLayout"
 	         android:layout_marginTop="5dip"
 	         android:cacheColorHint="#00000000" />
-	  	 <TextView 
-	  	     android:id="@+id/android:empty"
-	  	     style="@style/boldFont"
+         <RelativeLayout 
+		     android:id="@android:id/empty"
 	         android:layout_width="wrap_content"
 	         android:layout_height="wrap_content"
 	         android:layout_below="@id/listDivider1"
-	         android:layout_marginTop="10dip"
-	         android:layout_marginLeft="10dip"
-	         android:text="@string/no_loans"/>         	    
+	         android:layout_marginTop="20dip"
+	         android:layout_centerHorizontal="true" >
+	         <TextView 
+		  	     android:id="@+id/emptyAddLoanTextView"
+		  	     style="@style/boldFont"
+		         android:layout_width="wrap_content"
+		         android:layout_height="wrap_content"
+		         android:layout_marginTop="5dip"
+		         android:text="@string/no_loans"/>
+	         <ImageButton
+		         android:id="@+id/emptyAddLoanImgButton"
+		         android:layout_width="wrap_content"
+		         android:layout_height="wrap_content"
+		         android:layout_marginTop="5dip"
+	         	 android:layout_below="@id/emptyAddLoanTextView"
+		         android:src="@drawable/loan_image"
+		         android:contentDescription="@string/no_loans" />
+         </RelativeLayout>
 	<RelativeLayout 
 	    android:id="@+id/mainLayout"
         android:layout_width="wrap_content"
